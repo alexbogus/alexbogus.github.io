@@ -7,7 +7,7 @@
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
 - [x] Fase 3 — Theme propio: sistema de diseño base (paleta "Verdigris Stone": piedra oscura + acento verdín, **solo modo oscuro**, tarjetas de blog rediseñadas, iconos de redes sociales)
-- [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
+- [x] Fase 4 — Secciones de contenido (Home, Proyectos, Ponencias, Contacto)
 - [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
 - [x] Fase 6 — SEO, metadatos y pulido final (OG/Twitter cards, robots.txt, favicon, accesibilidad)
 - [ ] Fase 7 — Despliegue y cutover
@@ -63,7 +63,7 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 │   ├── _index.md                  # Home
 │   ├── cv/_index.md                # Página de CV (renderiza desde data/)
 │   ├── proyectos/                  # Proyectos (bundle de páginas o lista simple)
-│   ├── charlas-publicaciones/_index.md
+│   ├── ponencias/_index.md         # + una carpeta por ponencia (page bundle)
 │   ├── blog/
 │   │   ├── _index.md
 │   │   └── mi-primer-articulo.md
@@ -127,10 +127,10 @@ Puntos clave de la arquitectura:
 - **Pendiente explícito**: imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles).
 
 ### Fase 4 — Secciones de contenido ✅
-- Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Charlas y Publicaciones/Blog.
+- Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Ponencias/Blog.
 - Proyectos (`content/proyectos/` + `layouts/proyectos/{list,single}.html`): sección funcional como páginas Markdown independientes (no YAML), con estado vacío ("Próximamente...") mientras no haya proyectos reales cargados. Se añadió `archetypes/proyectos.md` para crear nuevas entradas fácilmente (`hugo new proyectos/nombre-proyecto.md`). **Actualizado**: el listado ahora usa el mismo formato de tarjeta con imagen que el blog (`layouts/partials/project-card.html`, reutiliza `.post-list`/`.post-card`), y la ficha individual admite imagen de cabecera (page bundle, `cover.*`), periodo (`period`), tags y una sección de "Referencias" con enlaces externos (`links: [{label, url}]`) — probado con un proyecto temporal (no commiteado) para validar la plantilla.
   - **Pendiente del usuario**: aún no hay proyectos reales cargados — cuando Alejandro tenga contenido (iniciativas, colaboraciones destacadas) se añaden como páginas nuevas.
-- Charlas y Publicaciones (`content/charlas-publicaciones/` + `layouts/charlas-publicaciones/list.html`): reutiliza `data/cv.yaml → publications` (misma fuente que la sección de certificaciones del CV, sin duplicar datos).
+- Ponencias (`content/ponencias/` + `layouts/ponencias/{list,single}.html`): **renombrada y rediseñada** — ya no reutiliza `data/cv.yaml → publications` (campo eliminado). Cada ponencia es una página independiente (`title`, `date`, `place`, `link` opcional, `tags`); el listado las agrupa cronológicamente por mes/año (`.Pages.GroupByDate ":January 2006"`, con truco del prefijo `:` para nombres de mes en español — hay que recortar el `:` manualmente con `strings.TrimPrefix`, Hugo no lo hace solo). Si la ponencia tiene `link`, el título enlaza directo al recurso externo; si no, enlaza a su propia ficha. La sección "Publicaciones y Conferencias" del `/cv/` se sustituyó por un enlace a `/ponencias/`. **Índice rápido**: barra de navegación al principio del listado con los años en negrita (ej. `2026 · 2025`) y los meses de cada año como píldoras pequeñas justo al lado, todo con anclas (`#year-2026`, `#2026-02`) y `scroll-margin-top` para que el header pegajoso no tape el destino.
 - Contacto (`content/contacto.md` + `layouts/contacto/single.html`): email, LinkedIn, GitHub, ubicación y mensaje "abierto a oportunidades" (`data/social.yaml → open_to`). **Corrección posterior**: el footer global mostraba el mismo bloque completo en todas las páginas, duplicándose visualmente al entrar en `/contacto/`. Se rediseñó el footer (`layouts/partials/footer.html`) como barra de utilidad discreta (copyright + enlaces de texto pequeños), dejando `/contacto/` como única página con el mensaje completo y los botones grandes.
 - Nota: el enlace "Blog" del menú/home apunta a `/blog/`, que aún no existe (404) — se construye en la Fase 5.
 

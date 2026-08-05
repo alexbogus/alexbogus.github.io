@@ -29,8 +29,8 @@ enableRobotsTXT = true
     url = '/proyectos/'
     weight = 30
   [[menu.main]]
-    name = 'Charlas y Publicaciones'
-    url = '/charlas-publicaciones/'
+    name = 'Ponencias'
+    url = '/ponencias/'
     weight = 40
   [[menu.main]]
     name = 'Blog'

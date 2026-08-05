@@ -354,8 +354,69 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-1); margin-bottom: var(--space-4); }
 .cert-item { display: block; }
 
-.publications-list { list-style: none; padding: 0; }
-.publications-list li { padding: var(--space-2) 0; border-bottom: 1px solid var(--border); }
+// ------------------------------------------------------------
+// Ponencias — listado cronológico agrupado por mes/año
+// ------------------------------------------------------------
+.ponencias-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.6rem;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+}
+.ponencias-nav-year-link {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-left: var(--space-2);
+}
+.ponencias-nav-year-link:first-child { margin-left: 0; }
+.ponencias-nav-year-link:hover { color: var(--accent); }
+.ponencias-nav-month-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 0.15rem 0.6rem;
+}
+.ponencias-nav-month-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.ponencias-group { margin-bottom: var(--space-4); scroll-margin-top: 5rem; }
+.ponencias-group-title {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 var(--space-2);
+  scroll-margin-top: 5rem;
+}
+.ponencias-list { list-style: none; padding: 0; margin: 0; }
+.ponencia-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-top: 1px solid var(--border);
+}
+.ponencia-item:first-child { border-top: none; }
+.ponencia-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+  width: 3ch;
+}
+.ponencia-body { display: flex; flex-direction: column; gap: 0.15rem; }
+.ponencia-title { color: var(--text-primary); text-decoration: none; font-weight: 500; }
+.ponencia-title:hover { color: var(--accent); }
+.ponencia-place { color: var(--text-secondary); font-size: 0.85rem; }
 
 // ------------------------------------------------------------
 // Explore cards, contact

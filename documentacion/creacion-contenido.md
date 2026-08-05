@@ -106,17 +106,30 @@ Todo el contenido del CV vive en `data/cv.yaml` — no hay que tocar plantillas.
 
 Guarda y refresca `hugo server` — no hace falta build manual, se recarga solo.
 
-## 5. Añadir charlas y publicaciones
+## 5. Añadir una ponencia
 
-También en `data/cv.yaml`, al final, bajo `publications:` — es una lista simple:
+`/ponencias/` sustituye a la antigua "Charlas y Publicaciones". Cada ponencia es una página independiente, y el listado las agrupa automáticamente por mes y año (con un índice rápido arriba para saltar directo a un año o mes).
 
-```yaml
-publications:
-  - "ONTANEDA 2025 - Telecomunicaciones en Emergencias"
-  - "Nueva charla o publicación aquí"
+```bash
+hugo new ponencias/nombre-del-evento/index.md
 ```
 
-Se muestra automáticamente en dos sitios: la sección de certificaciones del `/cv/` y la página dedicada `/charlas-publicaciones/` — no hay que editar nada más.
+Front matter:
+
+```yaml
+---
+title: "Nombre de la charla o conferencia"
+date: 2026-02-10   # ← la fecha real del evento; determina el grupo mes/año
+place: "ISMS Forum, Madrid"
+link: ""            # opcional: si lo rellenas, el título enlaza directo ahí en vez de a una ficha propia
+tags: []
+draft: true          # ← cámbialo a false cuando quieras publicarlo
+---
+```
+
+- Si rellenas `link` (por ejemplo el vídeo, las diapositivas o la noticia del evento), el título en el listado enlaza directamente ahí.
+- Si lo dejas vacío, el título enlaza a la ficha propia de la ponencia (`layouts/ponencias/single.html`), donde puedes escribir contenido adicional en Markdown debajo del front matter.
+- No hace falta tocar `data/cv.yaml` — ese campo (`publications`) se eliminó porque ahora todo vive en `content/ponencias/`.
 
 ---
 

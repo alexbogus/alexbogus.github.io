@@ -1,0 +1,52 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+
+    {{ $groups := .Pages.GroupByDate ":January 2006" }}
+    {{ if $groups }}
+
+    <nav class="ponencias-nav" aria-label="Índice por año y mes">
+      {{ $lastYear := "" }}
+      {{ range $groups }}
+      {{ $year := (index .Pages 0).Date.Format "2006" }}
+      {{ $anchor := (index .Pages 0).Date.Format "2006-01" }}
+      {{ $monthLabel := .Key | strings.TrimPrefix ":" | title }}
+      {{ if ne $year $lastYear }}<a href="#year-{{ $year }}" class="ponencias-nav-year-link">{{ $year }}</a>{{ end }}
+      <a href="#{{ $anchor }}" class="ponencias-nav-month-link">{{ $monthLabel }}</a>
+      {{ $lastYear = $year }}
+      {{ end }}
+    </nav>
+
+    <div class="ponencias">
+      {{ $lastYear2 := "" }}
+      {{ range $groups }}
+      {{ $year := (index .Pages 0).Date.Format "2006" }}
+      {{ $anchor := (index .Pages 0).Date.Format "2006-01" }}
+      <div class="ponencias-group"{{ if ne $year $lastYear2 }} id="year-{{ $year }}"{{ end }}>
+        <h2 class="ponencias-group-title" id="{{ $anchor }}">{{ .Key | strings.TrimPrefix ":" | title }}</h2>
+        <ul class="ponencias-list">
+          {{ range .Pages }}
+          <li class="ponencia-item">
+            <span class="ponencia-date">{{ .Date.Format "02/01" }}</span>
+            <div class="ponencia-body">
+              {{ if .Params.link }}
+              <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="ponencia-title">{{ .Title }}</a>
+              {{ else }}
+              <a href="{{ .RelPermalink }}" class="ponencia-title">{{ .Title }}</a>
+              {{ end }}
+              {{ with .Params.place }}<span class="ponencia-place">{{ . }}</span>{{ end }}
+            </div>
+          </li>
+          {{ end }}
+        </ul>
+      </div>
+      {{ $lastYear2 = $year }}
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="empty-state">Próximamente: charlas, conferencias y ponencias.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
