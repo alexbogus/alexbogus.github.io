@@ -6,7 +6,7 @@
 
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
-- [x] Fase 3 — Theme propio: sistema de diseño base (paleta "Verdigris Stone": piedra oscura + acento verdín, toggle claro/oscuro, tarjetas de blog rediseñadas)
+- [x] Fase 3 — Theme propio: sistema de diseño base (paleta "Verdigris Stone": piedra oscura + acento verdín, **solo modo oscuro**, tarjetas de blog rediseñadas, iconos de redes sociales)
 - [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
 - [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
 - [ ] Fase 6 — SEO, metadatos y pulido final
@@ -23,7 +23,7 @@ Actualmente `alexbogus.github.io` es una única página HTML/CSS/JS estática (`
 - Blog de artículos propios (nuevo)
 - Contacto
 
-Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos estructurados y desplegándolo automáticamente en GitHub Pages vía GitHub Actions, manteniendo `alejandroaliaga.com` como dominio canónico. El diseño se rehace por completo desde cero (theme propio), con soporte de modo claro/oscuro, sin analytics por ahora.
+Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos estructurados y desplegándolo automáticamente en GitHub Pages vía GitHub Actions, manteniendo `alejandroaliaga.com` como dominio canónico. El diseño se rehace por completo desde cero (theme propio), solo modo oscuro, sin analytics por ahora.
 
 ## Decisiones ya tomadas
 
@@ -32,7 +32,7 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 | Generador estático | **Hugo** (Extended, para soportar Sass/SCSS) |
 | Contenido del CV | Datos estructurados (YAML/TOML) + templates Hugo, no HTML a mano |
 | Enfoque de diseño | Rediseño completo, theme propio desde cero |
-| Estética | Oscuro por defecto (con selector a modo claro), paleta "Verdigris Stone": piedra oscura cálida + acento verdín/pátina oxidada |
+| Estética | Solo modo oscuro (sin selector — decisión posterior que revierte el plan inicial de híbrido claro/oscuro), paleta "Verdigris Stone": piedra oscura cálida + acento verdín/pátina oxidada |
 | Hero (home) | Fondo fotográfico a pantalla completa (montaña nevada al atardecer) con overlay, en vez de retrato — decisión posterior que sustituye la idea inicial de foto de Alejandro |
 | Tarjetas de blog | Imagen destacada por artículo (formato tipo mahmoudnabhan.com) — **pendiente de imágenes reales, hay fallback visual mientras tanto** |
 | Blog | Básico + tags/categorías + RSS (sin comentarios de momento) |
@@ -51,7 +51,7 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 
 5. **Comparativa "Paletas ejecutivas"** (artifact generado para decidir la dirección de color, 8 opciones en 2 rondas: Navy Steel, Graphite Cobalt, Slate Emerald, Charcoal Burgundy, Ink Violet, Verdigris Stone, Obsidian Clay, Quiet Chrome). El usuario descartó el ámbar inicial por no transmitir suficiente "ejecutivo/tech" y, tras ver las 8 alternativas, eligió **F · Verdigris Stone**.
 
-**Síntesis final aplicada en la Fase 3 (paleta F · Verdigris Stone)**: fondo piedra oscura cálida no-negro (`#1a1815`) por defecto con modo claro cálido (`#f2eee4`) alternable; acento verdín/pátina oxidada (`#6fa893` oscuro / `#3f7d68` claro, ajustado para contraste AA); tipografía Inter (texto) + JetBrains Mono (metadatos/labels/eyebrows); grid de espaciado de 8px; radios 8px (tarjetas/controles) y pill (badges/botones/tags); motion sutil (hover lift, transiciones 180ms).
+**Síntesis final aplicada en la Fase 3 (paleta F · Verdigris Stone)**: fondo piedra oscura cálida no-negro (`#1a1815`), **solo modo oscuro** (se retiró el modo claro y el toggle tras revisión de diseño); acento verdín/pátina oxidada (`#6fa893`); tipografía Inter (texto) + JetBrains Mono (metadatos/labels/eyebrows); grid de espaciado de 8px; radios 8px (tarjetas/controles) y pill (badges/botones/tags); motion sutil (hover lift, transiciones 180ms); iconos SVG propios (`layouts/partials/social-icon.html`) para LinkedIn/GitHub/email en vez de solo texto.
 
 ## Arquitectura del sitio
 
@@ -78,8 +78,8 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 │   ├── index.html                  # home a medida
 │   └── cv/single.html              # layout específico del CV
 ├── assets/
-│   ├── scss/                       # estilos propios (Hugo Pipes + SCSS, modo claro/oscuro)
-│   └── js/                         # JS mínimo (toggle de tema, menú móvil)
+│   ├── scss/                       # estilos propios (Hugo Pipes + SCSS, solo modo oscuro)
+│   └── js/                         # JS mínimo (menú móvil)
 ├── static/
 │   ├── CNAME
 │   ├── favicon...
@@ -92,7 +92,7 @@ Puntos clave de la arquitectura:
 - **CV como datos**: `data/cv.yaml` contendrá `about`, `experience[]`, `skills{core, technical, languages}`, `certifications[]` — la página `/cv/` los renderiza con un layout dedicado. Esto reutiliza directamente el contenido ya existente en `legacy-site/index.html` (timeline de experiencia, skills con barras, certificaciones, publicaciones).
 - **Proyectos / Charlas / Publicaciones**: se migran a `data/publicaciones.yaml` o a content bundles si en el futuro cada charla merece su propia página con más detalle.
 - **Blog**: sección estándar de Hugo (`content/blog/`), con `_index.md` como listado, cada artículo en Markdown, tags como taxonomía nativa de Hugo, y RSS nativo de Hugo.
-- **Modo claro/oscuro**: variables CSS (custom properties) + `prefers-color-scheme` como valor por defecto, con un toggle JS que persiste la preferencia en `localStorage`.
+- **Solo modo oscuro**: variables CSS (custom properties) en `:root`, sin toggle ni modo claro (decisión tomada tras revisar el diseño en la Fase 3).
 - **Sin build tool de Node**: se usa Hugo Pipes (SCSS→CSS, minificación, fingerprinting) nativo de Hugo.
 
 ## Plan de implementación por fases
@@ -118,11 +118,13 @@ Puntos clave de la arquitectura:
 - Tokens de diseño en `assets/scss/main.scss` vía CSS custom properties (`:root` = oscuro por defecto, `:root[data-theme='light']` = claro): color, tipografía (Inter + JetBrains Mono), espaciado de 8px, radios, sombra, transición.
 - Toggle de tema (`layouts/partials/header.html` + `assets/js/site.js`): botón sol/luna, persiste preferencia en `localStorage`, script inline en `<head>` evita parpadeo (FOUC) al cargar.
 - Menú móvil con botón hamburguesa, mismo `assets/js/site.js`, sin dependencias externas.
-- Hero de la home (`layouts/index.html`) **rehecho** (tras probar primero el enfoque de retrato) como fondo fotográfico a pantalla completa: foto de montaña nevada al atardecer (`assets/images/hero-bg.jpg`, procesada con `resources.Resize "2400x q82"` — de 7.2MB original a ~130KB servido) con overlay degradado para legibilidad del texto. El hero se mantiene **siempre oscuro** con colores propios fijos (`--hero-text`, `--hero-accent`, etc.), deliberadamente ajeno al toggle claro/oscuro del resto del sitio, ya que la imagen no tiene una lectura sensata en modo claro.
+- Hero de la home (`layouts/index.html`) **rehecho** (tras probar primero el enfoque de retrato) como fondo fotográfico a pantalla completa: foto de montaña nevada al atardecer (`assets/images/hero-bg.jpg`, procesada con `resources.Resize "2400x q82"` — de 7.2MB original a ~130KB servido) con overlay degradado para legibilidad del texto. Usa colores propios fijos (`--hero-text`, `--hero-accent`, etc.), independientes del resto del sitio.
 - Tarjetas de blog (`layouts/partials/post-card.html`, reutilizado en listado y páginas de tag) rediseñadas al estilo de mahmoudnabhan.com: imagen de portada (`Resources.GetMatch "cover*"` en el page bundle) con fallback a un bloque con gradiente + primer tag, eyebrow de categoría, título, resumen, fecha y tiempo de lectura con iconos — **pendiente que se añadan imágenes de portada reales por artículo** (mientras tanto el fallback ya es visualmente coherente, no hay huecos rotos).
 - Paleta cambiada de un acento ámbar/dorado inicial a **F · Verdigris Stone** (piedra oscura + acento verdín/pátina oxidada) tras comparar 8 direcciones ejecutivas en un artifact dedicado — ver sección "Referencias de diseño".
-- Verificado visualmente con `hugo server` + Chrome: home (hero con foto, claro/oscuro, móvil 390×844), blog (lista y artículo), CV, menú móvil.
-- **Pendiente explícito**: imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles). El hero ya no depende de una foto de Alejandro — se resolvió con la imagen de montaña.
+- **Modo claro retirado**: tras revisar el resultado, se decidió dejar el sitio solo en oscuro — se eliminaron el toggle de tema (`theme-toggle`), los tokens `:root[data-theme='light']`, el script anti-parpadeo en `<head>` y la lógica JS asociada.
+- **Iconos de redes sociales**: nuevo partial `layouts/partials/social-icon.html` (LinkedIn, GitHub, email en SVG) usado en footer, home y `/contacto/`, sustituyendo los enlaces de solo texto.
+- Verificado visualmente con `hugo server` + Chrome: home (hero con foto, móvil 390×844), blog (lista y artículo), CV, contacto (iconos), menú móvil.
+- **Pendiente explícito**: imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles).
 
 ### Fase 4 — Secciones de contenido ✅
 - Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Charlas y Publicaciones/Blog.
@@ -158,4 +160,4 @@ Puntos clave de la arquitectura:
 - `hugo server -D` en local para revisar cada fase visualmente (incluye borradores).
 - `hugo --gc --minify` para validar que el build de producción no tiene errores antes de cada push.
 - Revisar el workflow de GitHub Actions en la pestaña "Actions" tras el cutover para confirmar el despliegue.
-- Comprobar en el navegador: modo claro/oscuro, RSS, sitemap, y que `alejandroaliaga.com` sirve el sitio correctamente vía HTTPS.
+- Comprobar en el navegador: RSS, sitemap, y que `alejandroaliaga.com` sirve el sitio correctamente vía HTTPS.

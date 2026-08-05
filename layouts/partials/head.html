@@ -15,10 +15,3 @@
 {{ with .OutputFormats.Get "RSS" }}
 <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ $.Site.Title }}">
 {{ end }}
-
-<script>
-  (function () {
-    var stored = localStorage.getItem('theme');
-    if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  })();
-</script>

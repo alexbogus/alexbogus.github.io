@@ -1,14 +1,14 @@
 // ============================================================
 // Sistema de diseño — Fase 3
-// Paleta "F · Verdigris Stone": piedra oscura cálida (por defecto) +
-// modo claro, acento verdín/pátina oxidada (no verde-neón de terminal).
+// Paleta "F · Verdigris Stone": piedra oscura cálida, acento
+// verdín/pátina oxidada (no verde-neón de terminal). Solo modo oscuro
+// (decisión deliberada, sin selector claro/oscuro).
 // Tipografía: Inter (texto) + JetBrains Mono (metadatos/labels).
 // Grid de espaciado de 8px, radios 8px / pill, motion sutil.
 // Referencias: NeuroSync & Lumina (Neuform), mahmoudnabhan.com (blog cards).
 // ============================================================
 
 :root {
-  // --- Modo oscuro (por defecto) ---
   --bg: #1a1815;
   --bg-elevated: #221f1a;
   --surface: #262219;
@@ -39,23 +39,6 @@
   --transition: 180ms ease;
 
   color-scheme: dark;
-}
-
-:root[data-theme='light'] {
-  --bg: #f2eee4;
-  --bg-elevated: #faf7f0;
-  --surface: #ece6d6;
-  --surface-hover: #e2dac5;
-  --border: #ddd3bd;
-  --text-primary: #201d17;
-  --text-secondary: #5c5647;
-  --text-muted: #7a7364;
-  --accent: #3f7d68;
-  --accent-strong: #356b58;
-  --accent-contrast: #f2eee4;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-
-  color-scheme: light;
 }
 
 // ------------------------------------------------------------
@@ -103,7 +86,6 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
-:root[data-theme='light'] .site-header { background: rgba(242, 238, 228, 0.85); }
 
 .header-inner {
   display: flex;
@@ -137,25 +119,6 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .main-nav a:hover { color: var(--text-primary); }
 
 .mobile-nav-toggle { display: none; }
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background var(--transition), border-color var(--transition);
-}
-.theme-toggle:hover { background: var(--surface-hover); }
-.theme-toggle svg { width: 16px; height: 16px; }
-.theme-toggle .icon-moon { display: none; }
-:root[data-theme='light'] .theme-toggle .icon-sun { display: none; }
-:root[data-theme='light'] .theme-toggle .icon-moon { display: block; }
 
 @media (max-width: 760px) {
   .main-nav {
@@ -404,6 +367,7 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   transition: border-color var(--transition), color var(--transition);
 }
 .contact-links a:hover { border-color: var(--accent); color: var(--accent); }
+.contact-btn svg, .contact-links a svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 .footer-meta { color: var(--text-muted); font-size: 0.85rem; }
 
