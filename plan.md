@@ -6,7 +6,7 @@
 
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
-- [x] Fase 3 — Theme propio: sistema de diseño base (paleta oscura cálida + acento ámbar, toggle claro/oscuro, tarjetas de blog rediseñadas)
+- [x] Fase 3 — Theme propio: sistema de diseño base (paleta "Verdigris Stone": piedra oscura + acento verdín, toggle claro/oscuro, tarjetas de blog rediseñadas)
 - [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
 - [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
 - [ ] Fase 6 — SEO, metadatos y pulido final
@@ -32,7 +32,7 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 | Generador estático | **Hugo** (Extended, para soportar Sass/SCSS) |
 | Contenido del CV | Datos estructurados (YAML/TOML) + templates Hugo, no HTML a mano |
 | Enfoque de diseño | Rediseño completo, theme propio desde cero |
-| Estética | Oscuro cálido por defecto (con selector a modo claro), acento ámbar/dorado ejecutivo |
+| Estética | Oscuro por defecto (con selector a modo claro), paleta "Verdigris Stone": piedra oscura cálida + acento verdín/pátina oxidada |
 | Hero (home) | Foto real de Alejandro con tratamiento de color (no ilustración) — **pendiente de recibir la foto** |
 | Tarjetas de blog | Imagen destacada por artículo (formato tipo mahmoudnabhan.com) — **pendiente de imágenes reales, hay fallback visual mientras tanto** |
 | Blog | Básico + tags/categorías + RSS (sin comentarios de momento) |
@@ -49,7 +49,9 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 3. **mahmoudnabhan.com** (sección blog). Tarjetas de artículo con imagen destacada, categoría (eyebrow) en mayúsculas, título, fecha + tiempo de lectura con iconos, sobre fondo oscuro no-negro puro. Adoptado como base del listado de blog (`layouts/partials/post-card.html`).
 4. **Imagen de referencia de retrato ilustrado** (aportada por el usuario). Descartada como estilo final tras cuestionar el encaje con el posicionamiento ejecutivo (CISO/CTO fraccional) — se sustituye por una foto real con tratamiento de color, más coherente con credibilidad de asesor senior.
 
-**Síntesis final aplicada en la Fase 3**: fondo oscuro cálido no-negro (`#14120f`) por defecto con modo claro cálido (`#faf8f4`) alternable; acento ámbar/dorado ejecutivo (`#d9a44a` oscuro / `#a06f24` claro, ajustado para contraste AA); tipografía Inter (texto) + JetBrains Mono (metadatos/labels/eyebrows); grid de espaciado de 8px; radios 8px (tarjetas/controles) y pill (badges/botones/tags); motion sutil (hover lift, transiciones 180ms).
+5. **Comparativa "Paletas ejecutivas"** (artifact generado para decidir la dirección de color, 8 opciones en 2 rondas: Navy Steel, Graphite Cobalt, Slate Emerald, Charcoal Burgundy, Ink Violet, Verdigris Stone, Obsidian Clay, Quiet Chrome). El usuario descartó el ámbar inicial por no transmitir suficiente "ejecutivo/tech" y, tras ver las 8 alternativas, eligió **F · Verdigris Stone**.
+
+**Síntesis final aplicada en la Fase 3 (paleta F · Verdigris Stone)**: fondo piedra oscura cálida no-negro (`#1a1815`) por defecto con modo claro cálido (`#f2eee4`) alternable; acento verdín/pátina oxidada (`#6fa893` oscuro / `#3f7d68` claro, ajustado para contraste AA); tipografía Inter (texto) + JetBrains Mono (metadatos/labels/eyebrows); grid de espaciado de 8px; radios 8px (tarjetas/controles) y pill (badges/botones/tags); motion sutil (hover lift, transiciones 180ms).
 
 ## Arquitectura del sitio
 
