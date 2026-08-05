@@ -9,7 +9,7 @@
 - [x] Fase 3 — Theme propio: sistema de diseño base (paleta "Verdigris Stone": piedra oscura + acento verdín, **solo modo oscuro**, tarjetas de blog rediseñadas, iconos de redes sociales)
 - [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
 - [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
-- [ ] Fase 6 — SEO, metadatos y pulido final
+- [x] Fase 6 — SEO, metadatos y pulido final (OG/Twitter cards, robots.txt, favicon, accesibilidad)
 - [ ] Fase 7 — Despliegue y cutover
 
 ## Contexto
@@ -143,11 +143,13 @@ Puntos clave de la arquitectura:
 - 2 artículos de ejemplo publicados para validar el flujo completo: "Del SOC táctico al SOC estratégico" y "CISO fraccional: cuándo tiene sentido para una organización".
 - Build de producción sin warnings por primera vez (ya no falta ninguna plantilla).
 
-### Fase 6 — SEO, metadatos y pulido final
-- `sitemap.xml` (nativo de Hugo), meta tags Open Graph/Twitter Card por página, `robots.txt`.
-- Favicon y assets de marca.
-- Revisión de accesibilidad (contraste en ambos modos, navegación por teclado, `aria-label`s).
-- Lighthouse / PageSpeed pass.
+### Fase 6 — SEO, metadatos y pulido final ✅
+- `sitemap.xml` nativo de Hugo (ya se generaba, verificado).
+- `robots.txt` personalizado (`layouts/robots.txt`): `Allow: /` + referencia al sitemap (el por defecto de Hugo era solo `User-agent: *`).
+- Meta tags Open Graph y Twitter Card por página (`layouts/partials/head.html`): título, descripción, `og:type` (website/article), imagen — usa la portada del artículo si existe (page bundle) o si no, un recorte 1200×630 del `hero-bg.jpg` como fallback de marca consistente.
+- `theme-color` (`#1a1815`) y favicon propio (`static/favicon.svg`, el icono de escudo del sitio anterior recoloreado al acento verdín actual).
+- Accesibilidad: contraste de texto revisado y corregido (`--text-muted` subido de 4.3:1 a 4.9:1 sobre fondo para cumplir AA), `:focus-visible` con outline de acento en toda la web, skip-link ("Saltar al contenido") verificado por teclado, `aria-label` en la navegación principal y en el botón de menú móvil.
+- **Pendiente / recomendado**: correr un pase de Lighthouse/PageSpeed real desde Chrome DevTools una vez desplegado en `alejandroaliaga.com` (Fase 7) — no se ejecutó en este entorno por no depender de instalar tooling adicional, pero las bases (imágenes optimizadas, meta tags, accesibilidad) ya están cubiertas.
 
 ### Fase 7 — Despliegue y cutover
 - Probar el sitio completo en local (`hugo server`) y con un build de Actions en una PR desde `feature/hugo-migration` antes de tocar producción.

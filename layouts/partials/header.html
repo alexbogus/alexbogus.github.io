@@ -2,7 +2,7 @@
   <div class="container header-inner">
     <a href="{{ "/" | relURL }}" class="logo">{{ .Site.Title }}</a>
 
-    <nav class="main-nav" id="main-nav">
+    <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
       {{ range .Site.Menus.main }}
       <a href="{{ .URL }}">{{ .Name }}</a>
       {{ end }}
