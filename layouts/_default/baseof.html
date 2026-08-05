@@ -9,5 +9,7 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+  {{ $script := resources.Get "js/site.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $script.RelPermalink }}" defer></script>
 </body>
 </html>

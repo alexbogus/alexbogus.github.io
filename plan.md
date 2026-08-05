@@ -6,7 +6,7 @@
 
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
-- [ ] Fase 3 — Theme propio: sistema de diseño base (pospuesta hasta tener más referencias visuales; se sigue con estilos provisionales)
+- [x] Fase 3 — Theme propio: sistema de diseño base (paleta oscura cálida + acento ámbar, toggle claro/oscuro, tarjetas de blog rediseñadas)
 - [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
 - [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
 - [ ] Fase 6 — SEO, metadatos y pulido final
@@ -32,7 +32,9 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 | Generador estático | **Hugo** (Extended, para soportar Sass/SCSS) |
 | Contenido del CV | Datos estructurados (YAML/TOML) + templates Hugo, no HTML a mano |
 | Enfoque de diseño | Rediseño completo, theme propio desde cero |
-| Estética | Híbrido: diseño moderno neutro con selector claro/oscuro |
+| Estética | Oscuro cálido por defecto (con selector a modo claro), acento ámbar/dorado ejecutivo |
+| Hero (home) | Foto real de Alejandro con tratamiento de color (no ilustración) — **pendiente de recibir la foto** |
+| Tarjetas de blog | Imagen destacada por artículo (formato tipo mahmoudnabhan.com) — **pendiente de imágenes reales, hay fallback visual mientras tanto** |
 | Blog | Básico + tags/categorías + RSS (sin comentarios de momento) |
 | Secciones del sitio | Home, redes sociales, CV, blog, contacto, proyectos, charlas, publicaciones |
 | Idioma | Solo español (sin i18n por ahora) |
@@ -40,16 +42,14 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 | Despliegue | GitHub Actions → GitHub Pages (build automático en cada push a `main`) |
 | Analytics | Ninguno por ahora |
 
-## Referencias de diseño (en curso)
+## Referencias de diseño
 
-El usuario está recopilando sitios/plantillas de referencia que le resultan visualmente atractivos, para converger en la dirección visual del theme propio (Fase 3). Se documentan aquí a medida que se analizan, hasta fijar una síntesis final.
+1. **NeuroSync — Master Your Mind** (Neuform, Meng To). Estética de dashboard/bento grid. Tipografía Inter + JetBrains Mono, grid de 8px, radios 8px/pill.
+2. **Lumina — Brand Guidelines** (Neuform, Meng To). Hero atmosférico, misma base tipográfica y de espaciado que NeuroSync.
+3. **mahmoudnabhan.com** (sección blog). Tarjetas de artículo con imagen destacada, categoría (eyebrow) en mayúsculas, título, fecha + tiempo de lectura con iconos, sobre fondo oscuro no-negro puro. Adoptado como base del listado de blog (`layouts/partials/post-card.html`).
+4. **Imagen de referencia de retrato ilustrado** (aportada por el usuario). Descartada como estilo final tras cuestionar el encaje con el posicionamiento ejecutivo (CISO/CTO fraccional) — se sustituye por una foto real con tratamiento de color, más coherente con credibilidad de asesor senior.
 
-1. **NeuroSync — Master Your Mind** (Neuform, Meng To). Estética de dashboard/bento grid con paneles de datos. Paleta: primario terracota/óxido `#CC8066`, acento pizarra `#334155`, superficie oscura `#191C21` sobre fondo blanco. Tipografía Inter + JetBrains Mono. Espaciado base 8px, radios 8px (pill en badges). Motion: masked reveals, entradas escalonadas, hover lift, transiciones al scroll. **Relevancia**: la estética de paneles de datos podría encajar para representar skills/métricas del CV de forma más visual que las barras actuales.
-2. **Lumina — Brand Guidelines** (Neuform, Meng To). Hero atmosférico con efectos WebGL/gradientes/dither. Paleta: primario ámbar `#FDBA74`, acento pizarra fría `#475569`, superficie oscura `#11151D` sobre fondo blanco. Misma tipografía y sistema de espaciado que NeuroSync. **Relevancia**: tratamiento de hero muy visual e inmersivo, útil para la portada de la landing.
-
-**Patrones convergentes entre ambas referencias** (candidatos a base del theme): Inter + JetBrains Mono (ya usado en el sitio actual), fondo claro con superficies oscuras tipo panel (compatible con el modo híbrido claro/oscuro decidido), grid de 8px, esquinas de 8px/pill, movimiento sutil y contenido.
-
-*(Pendiente: más referencias antes de fijar la síntesis final de paleta/composición.)*
+**Síntesis final aplicada en la Fase 3**: fondo oscuro cálido no-negro (`#14120f`) por defecto con modo claro cálido (`#faf8f4`) alternable; acento ámbar/dorado ejecutivo (`#d9a44a` oscuro / `#a06f24` claro, ajustado para contraste AA); tipografía Inter (texto) + JetBrains Mono (metadatos/labels/eyebrows); grid de espaciado de 8px; radios 8px (tarjetas/controles) y pill (badges/botones/tags); motion sutil (hover lift, transiciones 180ms).
 
 ## Arquitectura del sitio
 
@@ -112,12 +112,14 @@ Puntos clave de la arquitectura:
 - Botón "Descargar/Imprimir CV" implementado con `window.print()`; pendiente afinar una hoja de estilos `@media print` dedicada cuando se cierre el diseño.
 - Verificado con `hugo server`: `/` y `/cv/` responden 200 y el contenido se renderiza correctamente desde YAML.
 
-### Fase 3 — Theme propio: sistema de diseño base
-- **Proceso de diseño iterativo**: el usuario comparte sitios web de referencia; se analiza cada uno (paleta, tipografía, composición, micro-interacciones) para extraer patrones aplicables, hasta converger en una dirección de diseño concreta antes de construir los partials definitivos.
-- El sitio debe ser **muy visual**: se buscarán/seleccionarán imágenes (fotografía o gráficos) para la landing page (hero, secciones de proyectos/charlas), priorizando bancos de imágenes de uso libre (Unsplash, Pexels) o recursos gráficos generados a medida.
-- Definir tokens de diseño (color, tipografía, espaciado) en SCSS con soporte claro/oscuro mediante custom properties.
-- Construir partials reutilizables: header/nav, footer, hero (con imagen/gráfico destacado), tarjeta, timeline, badge/tag, toggle de tema, menú móvil.
-- Aplicar el sistema a Home, CV y páginas de listado.
+### Fase 3 — Theme propio: sistema de diseño base ✅
+- Tokens de diseño en `assets/scss/main.scss` vía CSS custom properties (`:root` = oscuro por defecto, `:root[data-theme='light']` = claro): color, tipografía (Inter + JetBrains Mono), espaciado de 8px, radios, sombra, transición.
+- Toggle de tema (`layouts/partials/header.html` + `assets/js/site.js`): botón sol/luna, persiste preferencia en `localStorage`, script inline en `<head>` evita parpadeo (FOUC) al cargar.
+- Menú móvil con botón hamburguesa, mismo `assets/js/site.js`, sin dependencias externas.
+- Hero de la home (`layouts/index.html`) rediseñado a dos columnas: copy + retrato. El retrato busca `assets/images/hero-alejandro.jpg` vía `resources.Get`; si no existe, muestra un placeholder con gradiente ámbar e instrucción visible — **queda pendiente que Alejandro aporte una foto real** para activarlo automáticamente.
+- Tarjetas de blog (`layouts/partials/post-card.html`, reutilizado en listado y páginas de tag) rediseñadas al estilo de mahmoudnabhan.com: imagen de portada (`Resources.GetMatch "cover*"` en el page bundle) con fallback a un bloque con gradiente + primer tag, eyebrow de categoría, título, resumen, fecha y tiempo de lectura con iconos — **pendiente que se añadan imágenes de portada reales por artículo** (mientras tanto el fallback ya es visualmente coherente, no hay huecos rotos).
+- Verificado visualmente con `hugo server` + Chrome: home, blog (lista y artículo), CV, modo claro/oscuro y menú móvil (390×844) funcionan correctamente.
+- **Pendientes explícitos para cuando haya material**: 1) foto real de Alejandro para el hero (`assets/images/hero-alejandro.jpg`), 2) imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles).
 
 ### Fase 4 — Secciones de contenido ✅
 - Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Charlas y Publicaciones/Blog.

@@ -4,14 +4,7 @@
     <h1 class="section-title">Tag: {{ .Title }}</h1>
     <div class="post-list">
       {{ range .Pages }}
-      <article class="post-card">
-        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <div class="meta">
-          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
-          <span>· {{ .ReadingTime }} min de lectura</span>
-        </div>
-        {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
-      </article>
+      {{ partial "post-card.html" . }}
       {{ end }}
     </div>
     <p><a href="{{ "/tags/" | relURL }}">&larr; Todos los tags</a></p>
