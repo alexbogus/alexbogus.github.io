@@ -48,7 +48,43 @@ content/blog/mi-nuevo-articulo/
 
 El sistema la recoge automáticamente (`Resources.GetMatch "cover*"`) tanto en el listado como en la página del tag. Recomendación: usa una imagen ~1200×630 (horizontal) y no subas archivos enormes — si es una foto de cámara/móvil, redúcela antes (por ejemplo con Vista Previa → Exportar, o `sips -Z 1600 foto.jpg`).
 
-## 3. Modificar el CV
+## 3. Nuevo proyecto (con imagen y enlaces de referencia)
+
+Los proyectos usan tarjetas idénticas a las del blog. Crea siempre el proyecto como carpeta (page bundle), para poder añadirle imagen:
+
+```bash
+hugo new proyectos/nombre-del-proyecto/index.md
+```
+
+Front matter disponible:
+
+```yaml
+---
+title: "Nombre del proyecto"
+date: 2026-02-20
+summary: "Resumen corto para la tarjeta del listado."
+period: "2023 - 2024"
+tags: ["SOC", "Banca"]
+links:
+  - label: "Ver publicación"
+    url: "https://..."
+  - label: "Nota de prensa"
+    url: "https://..."
+draft: true   # ← cámbialo a false cuando quieras publicarlo
+---
+```
+
+Añade la imagen de cabecera en la misma carpeta, con un nombre que empiece por `cover` (igual que en el blog):
+
+```
+content/proyectos/nombre-del-proyecto/
+├── index.md
+└── cover.jpg
+```
+
+`period` aparece en la tarjeta del listado en vez del tiempo de lectura. `links` es opcional — si lo rellenas, se muestra una sección "Referencias" al final de la ficha del proyecto con un botón por enlace. El cuerpo del Markdown (debajo del front matter) es el contenido detallado del proyecto.
+
+## 4. Modificar el CV
 
 Todo el contenido del CV vive en `data/cv.yaml` — no hay que tocar plantillas. Estructura:
 
@@ -70,7 +106,7 @@ Todo el contenido del CV vive en `data/cv.yaml` — no hay que tocar plantillas.
 
 Guarda y refresca `hugo server` — no hace falta build manual, se recarga solo.
 
-## 4. Añadir charlas y publicaciones
+## 5. Añadir charlas y publicaciones
 
 También en `data/cv.yaml`, al final, bajo `publications:` — es una lista simple:
 

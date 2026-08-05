@@ -494,4 +494,16 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .post .content h2 { margin-top: var(--space-4); }
 .post .content p { color: var(--text-secondary); }
 
+.post-cover {
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+}
+.post-cover img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+
+.ref-links { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border); }
+.ref-links-title { font-size: 1.1rem; margin: 0 0 var(--space-2); }
+.ref-links-grid { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
 .wip-note { text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: var(--space-3); }
