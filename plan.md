@@ -131,7 +131,7 @@ Puntos clave de la arquitectura:
 - Proyectos (`content/proyectos/` + `layouts/proyectos/{list,single}.html`): sección funcional como páginas Markdown independientes (no YAML), con estado vacío ("Próximamente...") mientras no haya proyectos reales cargados. Se añadió `archetypes/proyectos.md` para crear nuevas entradas fácilmente (`hugo new proyectos/nombre-proyecto.md`).
   - **Pendiente del usuario**: aún no hay proyectos reales cargados — cuando Alejandro tenga contenido (iniciativas, colaboraciones destacadas) se añaden como páginas nuevas.
 - Charlas y Publicaciones (`content/charlas-publicaciones/` + `layouts/charlas-publicaciones/list.html`): reutiliza `data/cv.yaml → publications` (misma fuente que la sección de certificaciones del CV, sin duplicar datos).
-- Contacto (`content/contacto.md` + `layouts/contacto/single.html`): email, LinkedIn, GitHub, ubicación y mensaje "abierto a oportunidades" — ahora centralizado en `data/social.yaml → open_to` y reutilizado también por el footer global.
+- Contacto (`content/contacto.md` + `layouts/contacto/single.html`): email, LinkedIn, GitHub, ubicación y mensaje "abierto a oportunidades" (`data/social.yaml → open_to`). **Corrección posterior**: el footer global mostraba el mismo bloque completo en todas las páginas, duplicándose visualmente al entrar en `/contacto/`. Se rediseñó el footer (`layouts/partials/footer.html`) como barra de utilidad discreta (copyright + enlaces de texto pequeños), dejando `/contacto/` como única página con el mensaje completo y los botones grandes.
 - Nota: el enlace "Blog" del menú/home apunta a `/blog/`, que aún no existe (404) — se construye en la Fase 5.
 
 ### Fase 5 — Blog ✅
