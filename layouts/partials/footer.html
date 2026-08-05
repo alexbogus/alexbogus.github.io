@@ -1,0 +1,12 @@
+{{ $social := hugo.Data.social }}
+<footer class="site-footer" id="contacto">
+  <div class="container footer-inner">
+    <p>Actualmente abierto a oportunidades de consultoría estratégica, roles de CISO/CTO fraccional y proyectos de ciberseguridad.</p>
+    <div class="contact-links">
+      <a href="mailto:{{ $social.email }}">{{ $social.email }}</a>
+      <a href="{{ $social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="{{ $social.github }}" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="footer-meta">&copy; {{ now.Year }} {{ .Site.Params.author }} · {{ $social.location }}</p>
+  </div>
+</footer>

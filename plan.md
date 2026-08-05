@@ -5,7 +5,7 @@
 ## Estado actual
 
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
-- [ ] Fase 2 — Migración de datos del CV
+- [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
 - [ ] Fase 3 — Theme propio: sistema de diseño base (en curso: recopilando referencias visuales)
 - [ ] Fase 4 — Secciones de contenido
 - [ ] Fase 5 — Blog
@@ -104,10 +104,13 @@ Puntos clave de la arquitectura:
 - Sitio legacy (`index.html`, `style.css`, `script.js`) movido a `legacy-site/` como referencia de contenido para las siguientes fases.
 - `plan.md` añadido en la raíz del repo.
 
-### Fase 2 — Migración de datos del CV
-- Extraer el contenido de `legacy-site/index.html` (about, experiencia, skills, certificaciones, publicaciones) a `data/cv.yaml` y `data/social.yaml`.
-- Construir el layout `/cv/` reutilizando la estructura visual actual (timeline, barras de skills, grid de certificaciones) pero con el nuevo sistema de diseño.
-- Mantener la opción de "Descargar/Imprimir CV" — evaluar si se conserva como vista de impresión CSS (`@media print`) o como PDF estático generado aparte.
+### Fase 2 — Migración de datos del CV ✅
+- Contenido de `legacy-site/index.html` extraído a `data/cv.yaml` (about, experiencia, skills, certificaciones, publicaciones) y `data/social.yaml` (email, LinkedIn, GitHub, ubicación).
+- Layout base creado: `layouts/_default/baseof.html` + partials `head`/`header`/`footer`, y `layouts/cv/single.html` que renderiza `/cv/` desde `data/cv.yaml` (timeline de experiencia, barras de skills, grid de certificaciones, publicaciones).
+- Home provisional (`layouts/index.html`) añadida para poder navegar durante la iteración; se sustituirá por el diseño definitivo en la Fase 4.
+- Estilos actuales (`assets/scss/main.scss`) son **solo provisionales**, únicamente para legibilidad — el sistema de diseño real se define en la Fase 3.
+- Botón "Descargar/Imprimir CV" implementado con `window.print()`; pendiente afinar una hoja de estilos `@media print` dedicada cuando se cierre el diseño.
+- Verificado con `hugo server`: `/` y `/cv/` responden 200 y el contenido se renderiza correctamente desde YAML.
 
 ### Fase 3 — Theme propio: sistema de diseño base
 - **Proceso de diseño iterativo**: el usuario comparte sitios web de referencia; se analiza cada uno (paleta, tipografía, composición, micro-interacciones) para extraer patrones aplicables, hasta converger en una dirección de diseño concreta antes de construir los partials definitivos.

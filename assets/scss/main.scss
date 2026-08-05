@@ -1,0 +1,61 @@
+// Estilos provisionales de la Fase 2 — solo para legibilidad y verificar el
+// flujo de datos. Se sustituyen por el sistema de diseño definitivo en la
+// Fase 3 (paleta, tipografía, tokens, modo claro/oscuro).
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.site-header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.main-nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.section { padding: 3rem 0; border-bottom: 1px solid #eee; }
+
+.timeline-item { margin-bottom: 2rem; }
+.timeline-item .company { font-weight: 600; }
+.timeline-item .meta { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+.skill-item { margin-bottom: 0.75rem; }
+.bar { background: #eee; border-radius: 4px; height: 6px; overflow: hidden; }
+.fill { background: #2dd4bf; height: 100%; }
+
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem; margin-bottom: 2rem; }
+
+.tags .tag, .job-tags span, .cert-item { font-size: 0.8rem; }
+
+.contact-links a { margin-right: 1rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.btn-outline { background: transparent; color: #111; border: 1px solid #111; }
+
+.wip-note { text-align: center; color: #888; font-size: 0.85rem; padding: 1rem; }

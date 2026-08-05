@@ -1,0 +1,19 @@
+{{ define "main" }}
+{{ $cv := hugo.Data.cv }}
+<section class="section hero">
+  <div class="container">
+    <p class="badge">{{ $cv.about.availability }}</p>
+    <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
+    <h2 class="role">{{ $cv.about.role }}</h2>
+    <p class="tagline">{{ $cv.about.tagline }}</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
+      <a class="btn btn-outline" href="{{ "/#contacto" | relURL }}">Contactar</a>
+    </div>
+  </div>
+</section>
+<p class="wip-note">
+  <em>Nota: esta es una home provisional (Fase 2). El diseño y contenido definitivo de la landing
+  (hero visual, proyectos, charlas/publicaciones, blog) se construyen en las Fases 3 y 4.</em>
+</p>
+{{ end }}
