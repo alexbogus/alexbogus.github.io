@@ -1,0 +1,38 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+
+    {{ $paginator := .Paginate .Pages }}
+
+    {{ if $paginator.Pages }}
+    <div class="post-list">
+      {{ range $paginator.Pages }}
+      <article class="post-card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+          <span>· {{ .ReadingTime }} min de lectura</span>
+        </div>
+        {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+        {{ with .Params.tags }}
+        <div class="job-tags">{{ range . }}<span>{{ . }}</span>{{ end }}</div>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">&larr; Anteriores</a>{{ end }}
+      <span>Página {{ $paginator.PageNumber }} de {{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Siguientes &rarr;</a>{{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <p class="empty-state">Próximamente: artículos sobre ciberseguridad y estrategia.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

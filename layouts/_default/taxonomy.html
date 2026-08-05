@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Tags</h1>
+    {{ $terms := .Pages }}
+    {{ if $terms }}
+    <div class="job-tags">
+      {{ range $terms }}
+      <a href="{{ .RelPermalink }}">{{ .Title }} ({{ len .Pages }})</a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="empty-state">Todavía no hay artículos etiquetados.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

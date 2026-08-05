@@ -1,0 +1,20 @@
+{{ define "main" }}
+<article class="section post">
+  <div class="container">
+    <h1>{{ .Title }}</h1>
+    <div class="meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2 January 2006" }}</time>
+      <span>· {{ .ReadingTime }} min de lectura</span>
+    </div>
+    {{ with .Params.tags }}
+    <div class="job-tags">
+      {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+    </div>
+    {{ end }}
+    <div class="content">
+      {{ .Content }}
+    </div>
+    <p><a href="{{ "/blog/" | relURL }}">&larr; Volver al blog</a></p>
+  </div>
+</article>
+{{ end }}

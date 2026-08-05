@@ -77,3 +77,23 @@ body {
 .publications-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
 
 .contact-btn { display: inline-block; margin: 0 1rem 0.5rem 0; }
+
+.post-list { display: flex; flex-direction: column; gap: 2rem; }
+.post-card h2 { margin-bottom: 0.25rem; }
+.post-card .meta, .post .meta { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+
+.job-tags a {
+  display: inline-block;
+  margin: 0 0.4rem 0.4rem 0;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pagination { display: flex; gap: 1rem; align-items: center; margin-top: 2rem; }
+
+.post .content { margin-top: 1.5rem; }
+.post .content h2 { margin-top: 2rem; }

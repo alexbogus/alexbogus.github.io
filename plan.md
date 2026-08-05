@@ -8,7 +8,7 @@
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
 - [ ] Fase 3 — Theme propio: sistema de diseño base (pospuesta hasta tener más referencias visuales; se sigue con estilos provisionales)
 - [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
-- [ ] Fase 5 — Blog
+- [x] Fase 5 — Blog (listado paginado, artículo, tags, RSS, 2 artículos de ejemplo)
 - [ ] Fase 6 — SEO, metadatos y pulido final
 - [ ] Fase 7 — Despliegue y cutover
 
@@ -127,12 +127,14 @@ Puntos clave de la arquitectura:
 - Contacto (`content/contacto.md` + `layouts/contacto/single.html`): email, LinkedIn, GitHub, ubicación y mensaje "abierto a oportunidades" — ahora centralizado en `data/social.yaml → open_to` y reutilizado también por el footer global.
 - Nota: el enlace "Blog" del menú/home apunta a `/blog/`, que aún no existe (404) — se construye en la Fase 5.
 
-### Fase 5 — Blog
-- Configurar `content/blog/_index.md` como listado con paginación.
-- Layout de artículo individual con tiempo de lectura, tags, fecha.
-- Página de taxonomía `/tags/` para navegar por etiquetas.
-- Verificar generación de RSS.
-- Publicar 1-2 artículos de ejemplo para validar el flujo editorial completo.
+### Fase 5 — Blog ✅
+- `content/blog/_index.md` como listado paginado (`layouts/blog/list.html`, vía `.Paginate`).
+- `layouts/blog/single.html`: artículo con fecha, tiempo de lectura (`.ReadingTime`) y tags enlazados a su página de taxonomía.
+- `layouts/_default/taxonomy.html` (`/tags/`) y `layouts/_default/term.html` (`/tags/<tag>/`) para navegar por etiquetas.
+- RSS verificado en `/blog/index.xml` (nativo de Hugo, sin plantilla adicional).
+- `archetypes/blog.md` para crear artículos nuevos fácilmente (`hugo new blog/nombre-articulo.md`).
+- 2 artículos de ejemplo publicados para validar el flujo completo: "Del SOC táctico al SOC estratégico" y "CISO fraccional: cuándo tiene sentido para una organización".
+- Build de producción sin warnings por primera vez (ya no falta ninguna plantilla).
 
 ### Fase 6 — SEO, metadatos y pulido final
 - `sitemap.xml` (nativo de Hugo), meta tags Open Graph/Twitter Card por página, `robots.txt`.
