@@ -252,65 +252,86 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .job-tags a:hover { color: var(--accent); border-color: var(--accent); }
 
 // ------------------------------------------------------------
-// Hero (home)
+// Hero (home) — fondo fotográfico a pantalla completa.
+// Deliberadamente ajeno al toggle claro/oscuro: la imagen es
+// atmosférica y no tiene una lectura sensata en modo claro, así que
+// el hero se mantiene siempre oscuro con colores propios fijos.
 // ------------------------------------------------------------
 .hero {
-  padding-top: var(--space-8);
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: var(--space-6);
-  align-items: center;
-}
-.hero .container { display: contents; }
+  --hero-text: #f5f2ea;
+  --hero-text-2: rgba(245, 242, 234, 0.78);
+  --hero-accent: #8bc4ac;
 
-.hero-copy h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0 0 var(--space-1);
-}
-.hero-copy .role {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--accent);
-  margin: 0 0 var(--space-3);
-}
-.hero-copy .tagline {
-  color: var(--text-secondary);
-  font-size: 1.1rem;
-  max-width: 42ch;
-  margin-bottom: var(--space-4);
-}
-.hero-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-
-.hero-portrait {
   position: relative;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  aspect-ratio: 4 / 5;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(111, 168, 147, 0.35), transparent 60%),
-    linear-gradient(160deg, var(--surface), var(--bg-elevated));
-  border: 1px solid var(--border);
+  min-height: 90vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
 }
-.hero-portrait img {
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 35%;
+  z-index: 0;
 }
-.hero-portrait-placeholder {
-  color: var(--text-muted);
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 9, 8, 0.1) 0%, rgba(8, 9, 8, 0.5) 55%, rgba(6, 7, 6, 0.92) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-8) var(--space-3) var(--space-6);
+}
+
+.hero-content .badge {
+  color: var(--hero-accent);
+  border-color: rgba(245, 242, 234, 0.25);
+}
+.hero-content .badge::before { background: var(--hero-accent); }
+
+.hero-content h1 {
+  color: var(--hero-text);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin: 0 0 0.4rem;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+}
+.hero-content .role {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  text-align: center;
-  padding: var(--space-3);
+  font-size: 1rem;
+  color: var(--hero-accent);
+  margin: 0 0 var(--space-3);
 }
-.hero-portrait-placeholder svg { width: 64px; height: 64px; color: var(--accent); margin-bottom: var(--space-2); }
+.hero-content .tagline {
+  color: var(--hero-text-2);
+  font-size: 1.15rem;
+  max-width: 46ch;
+  margin-bottom: var(--space-4);
+}
+
+.hero-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.hero .btn {
+  background: var(--hero-accent);
+  color: #12160f;
+}
+.hero .btn:hover { background: #a3d6c0; }
+.hero .btn-outline {
+  color: var(--hero-text);
+  border-color: rgba(245, 242, 234, 0.4);
+}
+.hero .btn-outline:hover { background: rgba(245, 242, 234, 0.08); border-color: var(--hero-text); }
 
 @media (max-width: 760px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-portrait { order: -1; aspect-ratio: 16 / 10; }
+  .hero { min-height: 78vh; }
 }
 
 // ------------------------------------------------------------

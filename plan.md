@@ -33,7 +33,7 @@ Se sustituye la solución HTML manual por **Hugo**, generando el sitio con datos
 | Contenido del CV | Datos estructurados (YAML/TOML) + templates Hugo, no HTML a mano |
 | Enfoque de diseño | Rediseño completo, theme propio desde cero |
 | Estética | Oscuro por defecto (con selector a modo claro), paleta "Verdigris Stone": piedra oscura cálida + acento verdín/pátina oxidada |
-| Hero (home) | Foto real de Alejandro con tratamiento de color (no ilustración) — **pendiente de recibir la foto** |
+| Hero (home) | Fondo fotográfico a pantalla completa (montaña nevada al atardecer) con overlay, en vez de retrato — decisión posterior que sustituye la idea inicial de foto de Alejandro |
 | Tarjetas de blog | Imagen destacada por artículo (formato tipo mahmoudnabhan.com) — **pendiente de imágenes reales, hay fallback visual mientras tanto** |
 | Blog | Básico + tags/categorías + RSS (sin comentarios de momento) |
 | Secciones del sitio | Home, redes sociales, CV, blog, contacto, proyectos, charlas, publicaciones |
@@ -118,10 +118,11 @@ Puntos clave de la arquitectura:
 - Tokens de diseño en `assets/scss/main.scss` vía CSS custom properties (`:root` = oscuro por defecto, `:root[data-theme='light']` = claro): color, tipografía (Inter + JetBrains Mono), espaciado de 8px, radios, sombra, transición.
 - Toggle de tema (`layouts/partials/header.html` + `assets/js/site.js`): botón sol/luna, persiste preferencia en `localStorage`, script inline en `<head>` evita parpadeo (FOUC) al cargar.
 - Menú móvil con botón hamburguesa, mismo `assets/js/site.js`, sin dependencias externas.
-- Hero de la home (`layouts/index.html`) rediseñado a dos columnas: copy + retrato. El retrato busca `assets/images/hero-alejandro.jpg` vía `resources.Get`; si no existe, muestra un placeholder con gradiente ámbar e instrucción visible — **queda pendiente que Alejandro aporte una foto real** para activarlo automáticamente.
+- Hero de la home (`layouts/index.html`) **rehecho** (tras probar primero el enfoque de retrato) como fondo fotográfico a pantalla completa: foto de montaña nevada al atardecer (`assets/images/hero-bg.jpg`, procesada con `resources.Resize "2400x q82"` — de 7.2MB original a ~130KB servido) con overlay degradado para legibilidad del texto. El hero se mantiene **siempre oscuro** con colores propios fijos (`--hero-text`, `--hero-accent`, etc.), deliberadamente ajeno al toggle claro/oscuro del resto del sitio, ya que la imagen no tiene una lectura sensata en modo claro.
 - Tarjetas de blog (`layouts/partials/post-card.html`, reutilizado en listado y páginas de tag) rediseñadas al estilo de mahmoudnabhan.com: imagen de portada (`Resources.GetMatch "cover*"` en el page bundle) con fallback a un bloque con gradiente + primer tag, eyebrow de categoría, título, resumen, fecha y tiempo de lectura con iconos — **pendiente que se añadan imágenes de portada reales por artículo** (mientras tanto el fallback ya es visualmente coherente, no hay huecos rotos).
-- Verificado visualmente con `hugo server` + Chrome: home, blog (lista y artículo), CV, modo claro/oscuro y menú móvil (390×844) funcionan correctamente.
-- **Pendientes explícitos para cuando haya material**: 1) foto real de Alejandro para el hero (`assets/images/hero-alejandro.jpg`), 2) imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles).
+- Paleta cambiada de un acento ámbar/dorado inicial a **F · Verdigris Stone** (piedra oscura + acento verdín/pátina oxidada) tras comparar 8 direcciones ejecutivas en un artifact dedicado — ver sección "Referencias de diseño".
+- Verificado visualmente con `hugo server` + Chrome: home (hero con foto, claro/oscuro, móvil 390×844), blog (lista y artículo), CV, menú móvil.
+- **Pendiente explícito**: imagen de portada por artículo de blog (`content/blog/<slug>/cover.jpg` como page bundle, o adaptar a `assets/images/blog/<slug>.jpg` si se prefiere fuera de page bundles). El hero ya no depende de una foto de Alejandro — se resolvió con la imagen de montaña.
 
 ### Fase 4 — Secciones de contenido ✅
 - Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Charlas y Publicaciones/Blog.

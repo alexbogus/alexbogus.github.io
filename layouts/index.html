@@ -2,29 +2,21 @@
 {{ $cv := hugo.Data.cv }}
 {{ $social := hugo.Data.social }}
 
-<section class="section hero">
-  <div class="container">
-    <div class="hero-copy">
-      <p class="badge">{{ $cv.about.availability }}</p>
-      <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
-      <h2 class="role">{{ $cv.about.role }}</h2>
-      <p class="tagline">{{ $cv.about.tagline }}</p>
-      <div class="hero-actions">
-        <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
-        <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
-      </div>
-    </div>
-
-    <div class="hero-portrait">
-      {{ $portrait := resources.Get "images/hero-alejandro.jpg" }}
-      {{ if $portrait }}
-      <img src="{{ $portrait.RelPermalink }}" alt="{{ $cv.about.name }}">
-      {{ else }}
-      <div class="hero-portrait-placeholder">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        <p>Foto pendiente:<br>assets/images/hero-alejandro.jpg</p>
-      </div>
-      {{ end }}
+<section class="hero">
+  {{ $heroBg := resources.Get "images/hero-bg.jpg" }}
+  {{ if $heroBg }}
+  {{ $heroBg := $heroBg.Resize "2400x q82" }}
+  <img class="hero-bg" src="{{ $heroBg.RelPermalink }}" alt="" role="presentation">
+  {{ end }}
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="badge">{{ $cv.about.availability }}</p>
+    <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
+    <h2 class="role">{{ $cv.about.role }}</h2>
+    <p class="tagline">{{ $cv.about.tagline }}</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
+      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
     </div>
   </div>
 </section>
