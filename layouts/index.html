@@ -1,5 +1,7 @@
 {{ define "main" }}
 {{ $cv := hugo.Data.cv }}
+{{ $social := hugo.Data.social }}
+
 <section class="section hero">
   <div class="container">
     <p class="badge">{{ $cv.about.availability }}</p>
@@ -7,13 +9,57 @@
     <h2 class="role">{{ $cv.about.role }}</h2>
     <p class="tagline">{{ $cv.about.tagline }}</p>
     <div class="hero-actions">
-      <a class="btn" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
-      <a class="btn btn-outline" href="{{ "/#contacto" | relURL }}">Contactar</a>
+      <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
+      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
     </div>
   </div>
 </section>
-<p class="wip-note">
-  <em>Nota: esta es una home provisional (Fase 2). El diseño y contenido definitivo de la landing
-  (hero visual, proyectos, charlas/publicaciones, blog) se construyen en las Fases 3 y 4.</em>
-</p>
+
+<section id="about" class="section about">
+  <div class="container">
+    <h2 class="section-title">Sobre mí</h2>
+    <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
+    {{ range $cv.about.bio }}
+    <p>{{ . }}</p>
+    {{ end }}
+    <div class="tags">
+      {{ range $cv.about.tags }}<span class="tag">#{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="redes" class="section social-links">
+  <div class="container">
+    <h2 class="section-title">Redes sociales</h2>
+    <div class="contact-links">
+      <a href="{{ $social.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="{{ $social.github }}" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:{{ $social.email }}">{{ $social.email }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section explore">
+  <div class="container">
+    <h2 class="section-title">Explora</h2>
+    <div class="explore-grid">
+      <a class="explore-card" href="{{ "/cv/" | relURL }}">
+        <h3>Currículum</h3>
+        <p>Experiencia, skills y certificaciones.</p>
+      </a>
+      <a class="explore-card" href="{{ "/proyectos/" | relURL }}">
+        <h3>Proyectos</h3>
+        <p>Iniciativas y colaboraciones destacadas.</p>
+      </a>
+      <a class="explore-card" href="{{ "/charlas-publicaciones/" | relURL }}">
+        <h3>Charlas y Publicaciones</h3>
+        <p>Conferencias, artículos y apariciones públicas.</p>
+      </a>
+      <a class="explore-card" href="{{ "/blog/" | relURL }}">
+        <h3>Blog</h3>
+        <p>Artículos sobre ciberseguridad y estrategia.</p>
+      </a>
+    </div>
+  </div>
+</section>
 {{ end }}

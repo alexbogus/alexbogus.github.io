@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ $social := hugo.Data.social }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+    <p>{{ $social.open_to }}</p>
+    <div class="contact-links">
+      <a href="mailto:{{ $social.email }}" class="contact-btn">{{ $social.email }}</a>
+      <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" class="contact-btn">LinkedIn</a>
+      <a href="{{ $social.github }}" target="_blank" rel="noopener" class="contact-btn">GitHub</a>
+    </div>
+    <p class="footer-meta">{{ $social.location }}</p>
+  </div>
+</section>
+{{ end }}

@@ -59,3 +59,21 @@ body {
 .btn-outline { background: transparent; color: #111; border: 1px solid #111; }
 
 .wip-note { text-align: center; color: #888; font-size: 0.85rem; padding: 1rem; }
+
+.explore-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.explore-card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+.explore-card h3 { margin-top: 0; }
+
+.empty-state { color: #888; font-style: italic; }
+
+.publications-list { list-style: none; padding: 0; }
+.publications-list li { padding: 0.5rem 0; border-bottom: 1px solid #eee; }
+
+.contact-btn { display: inline-block; margin: 0 1rem 0.5rem 0; }

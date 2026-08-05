@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ $cv := hugo.Data.cv }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+    {{ if $cv.publications }}
+    <ul class="publications-list">
+      {{ range $cv.publications }}<li>{{ . }}</li>{{ end }}
+    </ul>
+    {{ else }}
+    <p class="empty-state">Próximamente: charlas y publicaciones.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

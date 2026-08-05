@@ -6,8 +6,8 @@
 
 - [x] Fase 1 — Andamiaje del proyecto Hugo (rama creada, Hugo inicializado, `hugo.toml`, `static/CNAME`, workflow de Actions creado pero dormido, sitio legacy movido a `legacy-site/`)
 - [x] Fase 2 — Migración de datos del CV (`data/cv.yaml`, `data/social.yaml`, página `/cv/` funcional con layout base provisional)
-- [ ] Fase 3 — Theme propio: sistema de diseño base (en curso: recopilando referencias visuales)
-- [ ] Fase 4 — Secciones de contenido
+- [ ] Fase 3 — Theme propio: sistema de diseño base (pospuesta hasta tener más referencias visuales; se sigue con estilos provisionales)
+- [x] Fase 4 — Secciones de contenido (Home, Proyectos, Charlas y Publicaciones, Contacto)
 - [ ] Fase 5 — Blog
 - [ ] Fase 6 — SEO, metadatos y pulido final
 - [ ] Fase 7 — Despliegue y cutover
@@ -119,11 +119,13 @@ Puntos clave de la arquitectura:
 - Construir partials reutilizables: header/nav, footer, hero (con imagen/gráfico destacado), tarjeta, timeline, badge/tag, toggle de tema, menú móvil.
 - Aplicar el sistema a Home, CV y páginas de listado.
 
-### Fase 4 — Secciones de contenido
-- Home (`content/_index.md` + `layouts/index.html`): hero, resumen "sobre mí", accesos directos a CV/blog/proyectos/contacto, enlaces a redes sociales (desde `data/social.yaml`).
-- Proyectos (`content/proyectos/`): listado de iniciativas destacadas.
-- Charlas y Publicaciones (`content/charlas-publicaciones/`): migrar la lista existente con formato mejorado (fecha, enlace si existe).
-- Contacto (`content/contacto/_index.md`): email, LinkedIn, GitHub, ubicación.
+### Fase 4 — Secciones de contenido ✅
+- Home (`content/_index.md` + `layouts/index.html`): hero, sección "Sobre mí" (`id="about"`, ancla usada por el menú), redes sociales, y bloque "Explora" con accesos a CV/Proyectos/Charlas y Publicaciones/Blog.
+- Proyectos (`content/proyectos/` + `layouts/proyectos/{list,single}.html`): sección funcional como páginas Markdown independientes (no YAML), con estado vacío ("Próximamente...") mientras no haya proyectos reales cargados. Se añadió `archetypes/proyectos.md` para crear nuevas entradas fácilmente (`hugo new proyectos/nombre-proyecto.md`).
+  - **Pendiente del usuario**: aún no hay proyectos reales cargados — cuando Alejandro tenga contenido (iniciativas, colaboraciones destacadas) se añaden como páginas nuevas.
+- Charlas y Publicaciones (`content/charlas-publicaciones/` + `layouts/charlas-publicaciones/list.html`): reutiliza `data/cv.yaml → publications` (misma fuente que la sección de certificaciones del CV, sin duplicar datos).
+- Contacto (`content/contacto.md` + `layouts/contacto/single.html`): email, LinkedIn, GitHub, ubicación y mensaje "abierto a oportunidades" — ahora centralizado en `data/social.yaml → open_to` y reutilizado también por el footer global.
+- Nota: el enlace "Blog" del menú/home apunta a `/blog/`, que aún no existe (404) — se construye en la Fase 5.
 
 ### Fase 5 — Blog
 - Configurar `content/blog/_index.md` como listado con paginación.
