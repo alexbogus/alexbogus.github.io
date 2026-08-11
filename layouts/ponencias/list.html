@@ -1,0 +1,57 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+
+    {{ $yearGroups := .Pages.GroupByDate "2006" }}
+    {{ if $yearGroups }}
+
+    {{ $ponenciaCount := len (where .Pages "Params.tags" "intersect" (slice "Ponencia")) }}
+    {{ $prensaCount := len (where .Pages "Params.tags" "intersect" (slice "Prensa")) }}
+    <div class="ponencias-filter" role="radiogroup" aria-label="Filtrar por tipo">
+      <input type="radio" name="ponencias-filter" id="pf-all" value="all" checked>
+      <label for="pf-all">Todas <span>{{ len .Pages }}</span></label>
+      <input type="radio" name="ponencias-filter" id="pf-ponencia" value="ponencia">
+      <label for="pf-ponencia">Ponencias <span>{{ $ponenciaCount }}</span></label>
+      <input type="radio" name="ponencias-filter" id="pf-prensa" value="prensa">
+      <label for="pf-prensa">Prensa <span>{{ $prensaCount }}</span></label>
+    </div>
+
+    <div class="ponencias">
+      {{ range $i, $yg := $yearGroups }}
+      <details class="ponencias-year" id="year-{{ $yg.Key }}"{{ if eq $i 0 }} open{{ end }}>
+        <summary>
+          <span class="ponencias-year-label">{{ $yg.Key }}</span>
+          <span class="ponencias-year-count">{{ len $yg.Pages }}</span>
+        </summary>
+        {{ $monthGroups := $yg.Pages.GroupByDate ":January 2006" }}
+        {{ range $monthGroups }}
+        <div class="ponencias-group">
+          <h3 class="ponencias-group-title" id="{{ (index .Pages 0).Date.Format "2006-01" }}">{{ .Key | strings.TrimPrefix ":" | title }}</h3>
+          <ul class="ponencias-list">
+            {{ range .Pages }}
+            {{ $tags := .Params.tags }}
+            <li class="ponencia-item" data-tags="{{ range $tags }}{{ lower . }} {{ end }}">
+              <span class="ponencia-date">{{ .Date.Format "02/01" }}</span>
+              <div class="ponencia-body">
+                {{ if .Params.link }}
+                <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="ponencia-title">{{ .Title }}</a>
+                {{ else }}
+                <a href="{{ .RelPermalink }}" class="ponencia-title">{{ .Title }}</a>
+                {{ end }}
+                {{ with .Params.place }}<span class="ponencia-place">{{ . }}</span>{{ end }}
+              </div>
+            </li>
+            {{ end }}
+          </ul>
+        </div>
+        {{ end }}
+      </details>
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="empty-state">Próximamente: charlas, conferencias y ponencias.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ $page := . }}
+{{ $cover := $page.Resources.GetMatch "cover*" }}
+<a class="post-card" href="{{ $page.RelPermalink }}">
+  <div class="post-card-media">
+    {{ if $cover }}
+    <img src="{{ $cover.RelPermalink }}" alt="">
+    {{ else }}
+    <span>{{ with $page.Params.tags }}{{ index . 0 }}{{ else }}{{ $page.Title }}{{ end }}</span>
+    {{ end }}
+  </div>
+  <div class="post-card-body">
+    {{ with $page.Params.tags }}<span class="post-eyebrow">{{ index . 0 }}</span>{{ end }}
+    <h2>{{ $page.Title }}</h2>
+    {{ with $page.Params.summary }}<p>{{ . }}</p>{{ end }}
+    <div class="post-meta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+      <time datetime="{{ $page.Date.Format "2006-01-02" }}">{{ $page.Date.Format "2 Jan 2006" }}</time>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      <span>{{ $page.ReadingTime }} min de lectura</span>
+    </div>
+  </div>
+</a>

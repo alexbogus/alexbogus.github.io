@@ -1,0 +1,37 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <div class="section-title-row">
+      <h1 class="section-title">{{ .Title }}</h1>
+      {{ with $.Site.GetPage "posts" }}{{ with .OutputFormats.Get "RSS" }}
+      <a class="rss-link" href="{{ .Permalink }}" aria-label="Suscríbete al feed RSS del blog">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1c5.523 0 10 4.477 10 10a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1C15 6.373 9.627 1 2 1zm0 5a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1 4 4 0 0 1 4 4 1 1 0 0 0 1 1h1a1 1 0 0 0 1-1 7 7 0 0 0-7-7zM3 11a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+        RSS
+      </a>
+      {{ end }}{{ end }}
+    </div>
+
+    {{ $all := (where site.RegularPages "Section" "in" (slice "posts" "notes")).ByDate.Reverse }}
+    {{ $paginator := .Paginate $all }}
+
+    {{ if $paginator.Pages }}
+    <div class="post-list">
+      {{ range $paginator.Pages }}
+      {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination">
+      {{ if $paginator.HasPrev }}<a href="{{ $paginator.Prev.URL }}">&larr; Anteriores</a>{{ end }}
+      <span>Página {{ $paginator.PageNumber }} de {{ $paginator.TotalPages }}</span>
+      {{ if $paginator.HasNext }}<a href="{{ $paginator.Next.URL }}">Siguientes &rarr;</a>{{ end }}
+    </nav>
+    {{ end }}
+
+    {{ else }}
+    <p class="empty-state">Próximamente: artículos sobre ciberseguridad y estrategia.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

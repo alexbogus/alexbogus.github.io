@@ -1,0 +1,92 @@
+{{ define "main" }}
+{{ $cv := .Params }}
+
+<section id="about" class="section about">
+  <div class="container">
+    <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
+    <h2 class="role">{{ $cv.about.role }}</h2>
+    <p class="tagline">{{ $cv.about.tagline }}</p>
+    <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
+    {{ range $cv.about.bio }}
+    <p>{{ . }}</p>
+    {{ end }}
+    <div class="tags">
+      {{ range $cv.about.tags }}<span class="tag">#{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="section experience">
+  <div class="container">
+    <h2 class="section-title">Experiencia Profesional</h2>
+    <div class="timeline">
+      {{ range $cv.experience }}
+      <div class="timeline-item">
+        <h3>{{ .title }}</h3>
+        <div class="company">{{ .company }}</div>
+        <div class="meta"><span>{{ .period }}</span> <span>{{ .location }}</span></div>
+        <ul class="job-desc">
+          {{ range .description }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        <div class="job-tags">
+          {{ range .tags }}<span>{{ . }}</span>{{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section skills">
+  <div class="container">
+    <h2 class="section-title">Skills &amp; Competencias</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Core Competencies</h3>
+        {{ range $cv.skills.core }}
+        <div class="skill-item">
+          <span>{{ .name }}</span>
+          <div class="bar"><div class="fill" style="width: {{ .level }}%"></div></div>
+        </div>
+        {{ end }}
+      </div>
+      <div class="skill-card">
+        <h3>Technical Knowledge</h3>
+        {{ range $cv.skills.technical }}
+        <div class="skill-item">
+          <span>{{ .name }}</span>
+          <div class="bar"><div class="fill" style="width: {{ .level }}%"></div></div>
+        </div>
+        {{ end }}
+      </div>
+      <div class="skill-card">
+        <h3>Languages</h3>
+        {{ range $cv.skills.languages }}
+        <div class="skill-item">
+          <span>{{ .name }}</span>
+          <div class="bar"><div class="fill" style="width: {{ .level }}%"></div></div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs" class="section certifications">
+  <div class="container">
+    <h2 class="section-title">Certificaciones</h2>
+    <div class="cert-grid">
+      {{ range $cv.certifications }}<div class="cert-item">✓ {{ . }}</div>{{ end }}
+    </div>
+
+    <p><a href="{{ "/ponencias/" | relURL }}">Ver todas las ponencias &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section print-section">
+  <div class="container">
+    <a class="btn" href="{{ "/cv/" | relURL }}" onclick="window.print(); return false;">Descargar / Imprimir CV</a>
+    <small>Formato PDF optimizado para impresión</small>
+  </div>
+</section>
+{{ end }}

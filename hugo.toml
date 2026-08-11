@@ -1,0 +1,55 @@
+baseURL = 'https://alejandroaliaga.com/'
+locale = 'es-es'
+title = 'Alejandro Aliaga Casanova'
+
+enableRobotsTXT = true
+
+[params]
+  author = 'Alejandro Aliaga Casanova'
+  description = 'Strategic SOC Advisor, CTO & CISO Fractional. Experto en ciberseguridad estratégica y gestión de riesgos.'
+
+[taxonomies]
+  tag = 'tags'
+
+[permalinks.page]
+  posts = "/blog/posts/:year/:month/:day/:contentbasename/"
+  notes = "/blog/notes/:contentbasename/"
+
+[permalinks.term]
+  tags = "/blog/tags/:slug/"
+
+[outputs]
+  home = ['HTML', 'RSS', 'llms']
+  section = ['HTML', 'RSS']
+
+[outputFormats.llms]
+  baseName = 'llms'
+  isPlainText = true
+  mediaType = 'text/plain'
+  root = true
+
+[menu]
+  [[menu.main]]
+    name = 'Sobre mí'
+    url = '/#about'
+    weight = 10
+  [[menu.main]]
+    name = 'CV'
+    url = '/cv/'
+    weight = 20
+  [[menu.main]]
+    name = 'Proyectos'
+    url = '/proyectos/'
+    weight = 30
+  [[menu.main]]
+    name = 'Ponencias'
+    url = '/ponencias/'
+    weight = 40
+  [[menu.main]]
+    name = 'Blog'
+    url = '/blog/'
+    weight = 50
+  [[menu.main]]
+    name = 'Contacto'
+    url = '/contacto/'
+    weight = 60

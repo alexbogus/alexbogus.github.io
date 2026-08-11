@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{ $cv := (.Site.GetPage "/cv").Params }}
+{{ $social := hugo.Data.social }}
+
+<section class="hero">
+  {{ $heroBg := resources.Get "images/hero-bg.jpg" }}
+  {{ if $heroBg }}
+  {{ $heroBg := $heroBg.Resize "2400x q82" }}
+  <img class="hero-bg" src="{{ $heroBg.RelPermalink }}" alt="" role="presentation">
+  {{ end }}
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="badge">{{ $cv.about.availability }}</p>
+    <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
+    <h2 class="role">{{ $cv.about.role }}</h2>
+    <p class="tagline">{{ $cv.about.tagline }}</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
+      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section about">
+  <div class="container">
+    <h2 class="section-title">Sobre mí</h2>
+    <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
+    {{ range $cv.about.bio }}
+    <p>{{ . }}</p>
+    {{ end }}
+    <div class="tags">
+      {{ range $cv.about.tags }}<span class="tag">#{{ . }}</span>{{ end }}
+    </div>
+  </div>
+</section>
+
+<section id="redes" class="section social-links">
+  <div class="container">
+    <h2 class="section-title">Redes sociales</h2>
+    <div class="contact-links">
+      <a href="{{ $social.linkedin }}" target="_blank" rel="noopener">{{ partial "social-icon.html" "linkedin" }}LinkedIn</a>
+      <a href="{{ $social.github }}" target="_blank" rel="noopener">{{ partial "social-icon.html" "github" }}GitHub</a>
+      <a href="{{ "/contacto/" | relURL }}">{{ partial "social-icon.html" "email" }}Contacto</a>
+    </div>
+  </div>
+</section>
+
+<section class="section explore">
+  <div class="container">
+    <h2 class="section-title">Explora</h2>
+    <div class="explore-grid">
+      <a class="explore-card" href="{{ "/cv/" | relURL }}">
+        <h3>Currículum</h3>
+        <p>Experiencia, skills y certificaciones.</p>
+      </a>
+      <a class="explore-card" href="{{ "/proyectos/" | relURL }}">
+        <h3>Proyectos</h3>
+        <p>Iniciativas y colaboraciones destacadas.</p>
+      </a>
+      <a class="explore-card" href="{{ "/ponencias/" | relURL }}">
+        <h3>Ponencias</h3>
+        <p>Charlas y conferencias, por fecha.</p>
+      </a>
+      <a class="explore-card" href="{{ "/blog/" | relURL }}">
+        <h3>Blog</h3>
+        <p>Artículos sobre ciberseguridad y estrategia.</p>
+      </a>
+    </div>
+  </div>
+</section>
+{{ end }}

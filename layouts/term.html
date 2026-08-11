@@ -1,0 +1,13 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">Tag: {{ .Title }}</h1>
+    <div class="post-list">
+      {{ range .Pages }}
+      {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+    <p><a href="{{ with $.Site.GetPage "tags" }}{{ .RelPermalink }}{{ end }}">&larr; Todos los tags</a></p>
+  </div>
+</section>
+{{ end }}

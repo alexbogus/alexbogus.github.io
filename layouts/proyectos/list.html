@@ -1,0 +1,17 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container">
+    <h1 class="section-title">{{ .Title }}</h1>
+    {{ $pages := .Pages }}
+    {{ if $pages }}
+    <div class="post-list">
+      {{ range $pages }}
+      {{ partial "project-card.html" . }}
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="empty-state">Próximamente: iniciativas y proyectos destacados.</p>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
