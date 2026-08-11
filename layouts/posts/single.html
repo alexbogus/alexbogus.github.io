@@ -19,4 +19,36 @@
     <p><a href="{{ "/blog/" | relURL }}">&larr; Volver al blog</a></p>
   </div>
 </article>
+
+{{ $current := . }}
+{{ $pool := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
+{{ $picks := slice }}
+{{ $seen := slice }}
+{{ range $pool.Related $current }}
+  {{ if and (ne .RelPermalink $current.RelPermalink) (lt (len $picks) 3) }}
+    {{ $picks = $picks | append . }}
+    {{ $seen = $seen | append .RelPermalink }}
+  {{ end }}
+{{ end }}
+{{ if lt (len $picks) 3 }}
+  {{ range $pool }}
+    {{ if and (ne .RelPermalink $current.RelPermalink) (not (in $seen .RelPermalink)) (lt (len $picks) 3) }}
+      {{ $picks = $picks | append . }}
+      {{ $seen = $seen | append .RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ with $picks }}
+<section class="section post-related">
+  <div class="container">
+    <h2 class="section-title">Sigue leyendo</h2>
+    <div class="post-list">
+      {{ range . }}
+      {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
 {{ end }}

@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ $cv := (.Site.GetPage "/cv").Params }}
 {{ $social := hugo.Data.social }}
+{{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
 
 <section class="hero">
   {{ $heroBg := resources.Get "images/hero-bg.jpg" }}
@@ -33,4 +34,20 @@
     </div>
   </div>
 </section>
+
+{{ with $posts }}
+<section id="blog" class="section blog-preview">
+  <div class="container">
+    <div class="section-title-row">
+      <h2 class="section-title">Blog</h2>
+      <a class="section-link" href="{{ "/blog/" | relURL }}">Ver todos los artículos &rarr;</a>
+    </div>
+    <div class="post-list">
+      {{ range first 3 . }}
+      {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
 {{ end }}
