@@ -4,12 +4,19 @@ Instrucciones para mantener el contenido del sitio (rama `feature/hugo-migration
 
 ## 1. Nueva entrada de blog
 
+El blog tiene dos tipos de contenido, ambos listados juntos en `/blog/`:
+
+- **`posts`** — artículos largos, con URL fechada `/blog/posts/AAAA/MM/DD/slug/`.
+- **`notes`** — notas breves, con URL simple `/blog/notes/slug/`.
+
 ```bash
 cd /Users/alexcasanova/Documents/github/alexbogus.github.io
-hugo new blog/mi-nuevo-articulo.md
+hugo new posts/mi-nuevo-articulo/index.md
+# o, para una nota breve:
+hugo new notes/mi-nueva-nota/index.md
 ```
 
-Esto crea `content/blog/mi-nuevo-articulo.md` con la plantilla de `archetypes/blog.md`. Edita el front matter:
+Esto crea el contenido como page bundle (`content/posts/mi-nuevo-articulo/index.md`) con la plantilla de `archetypes/posts.md` (o `archetypes/notes.md`). Edita el front matter:
 
 ```yaml
 ---
@@ -27,26 +34,19 @@ Escribe el contenido en Markdown debajo. Para previsualizar (incluye borradores)
 hugo server -D
 ```
 
-Los tags son libres — cualquier string nuevo crea automáticamente su página en `/tags/`.
+Los tags son libres — cualquier string nuevo crea automáticamente su página en `/blog/tags/`.
 
 ## 2. Imagen destacada en la tarjeta del blog
 
-Los artículos son ficheros sueltos (`content/blog/slug.md`), y la imagen de portada necesita que el artículo sea una carpeta ("page bundle"). Para añadir imagen a uno nuevo o existente:
-
-```bash
-mkdir content/blog/mi-nuevo-articulo
-mv content/blog/mi-nuevo-articulo.md content/blog/mi-nuevo-articulo/index.md
-```
-
-Y copia la imagen dentro de esa misma carpeta con un nombre que empiece por `cover`:
+`hugo new posts/.../index.md` ya crea el artículo como carpeta (page bundle), así que solo hace falta copiar la imagen dentro con un nombre que empiece por `cover`:
 
 ```
-content/blog/mi-nuevo-articulo/
+content/posts/mi-nuevo-articulo/
 ├── index.md
 └── cover.jpg
 ```
 
-El sistema la recoge automáticamente (`Resources.GetMatch "cover*"`) tanto en el listado como en la página del tag. Recomendación: usa una imagen ~1200×630 (horizontal) y no subas archivos enormes — si es una foto de cámara/móvil, redúcela antes (por ejemplo con Vista Previa → Exportar, o `sips -Z 1600 foto.jpg`).
+(Igual para `content/notes/mi-nueva-nota/`.) El sistema la recoge automáticamente (`Resources.GetMatch "cover*"`) tanto en el listado como en la página del tag. Recomendación: usa una imagen ~1200×630 (horizontal) y no subas archivos enormes — si es una foto de cámara/móvil, redúcela antes (por ejemplo con Vista Previa → Exportar, o `sips -Z 1600 foto.jpg`).
 
 ## 3. Nuevo proyecto (con imagen y enlaces de referencia)
 

@@ -7,7 +7,7 @@
       {{ partial "post-card.html" . }}
       {{ end }}
     </div>
-    <p><a href="{{ "/tags/" | relURL }}">&larr; Todos los tags</a></p>
+    <p><a href="{{ with $.Site.GetPage "tags" }}{{ .RelPermalink }}{{ end }}">&larr; Todos los tags</a></p>
   </div>
 </section>
 {{ end }}

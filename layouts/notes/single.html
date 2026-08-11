@@ -10,7 +10,7 @@
     </div>
     {{ with .Params.tags }}
     <div class="job-tags">
-      {{ range . }}<a href="{{ "/tags/" | relURL }}{{ . | urlize }}/">{{ . }}</a>{{ end }}
+      {{ range . }}{{ $tag := . }}{{ with $.Site.GetPage (printf "tags/%s" ($tag | urlize)) }}<a href="{{ .RelPermalink }}">{{ $tag }}</a>{{ end }}{{ end }}
     </div>
     {{ end }}
     <div class="content">

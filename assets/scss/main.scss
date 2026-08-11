@@ -97,6 +97,35 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   margin-bottom: var(--space-4);
 }
 
+.section-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+
+  .section-title { margin-bottom: 0; }
+}
+
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color var(--transition), border-color var(--transition);
+
+  &:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
 // ------------------------------------------------------------
 // Header
 // ------------------------------------------------------------
@@ -198,6 +227,49 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   border: 1px solid var(--border);
 }
 .btn-outline:hover { background: var(--surface); border-color: var(--accent); }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  max-width: 32rem;
+  margin-top: 2rem;
+
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  input,
+  textarea {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-control);
+    background: var(--surface);
+    color: var(--text-primary);
+    font: inherit;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .btn {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.4rem;
+  }
+}
+
+.form-status {
+  min-height: 1.2em;
+  font-size: 0.9rem;
+}
+.form-status-success { color: var(--accent-strong, var(--accent)); }
+.form-status-error { color: #c0392b; }
 
 .badge {
   display: inline-flex;

@@ -11,9 +11,22 @@ enableRobotsTXT = true
 [taxonomies]
   tag = 'tags'
 
+[permalinks.page]
+  posts = "/blog/posts/:year/:month/:day/:contentbasename/"
+  notes = "/blog/notes/:contentbasename/"
+
+[permalinks.term]
+  tags = "/blog/tags/:slug/"
+
 [outputs]
-  home = ['HTML', 'RSS']
+  home = ['HTML', 'RSS', 'llms']
   section = ['HTML', 'RSS']
+
+[outputFormats.llms]
+  baseName = 'llms'
+  isPlainText = true
+  mediaType = 'text/plain'
+  root = true
 
 [menu]
   [[menu.main]]

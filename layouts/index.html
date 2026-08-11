@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $cv := hugo.Data.cv }}
+{{ $cv := (.Site.GetPage "/cv").Params }}
 {{ $social := hugo.Data.social }}
 
 <section class="hero">
@@ -40,7 +40,7 @@
     <div class="contact-links">
       <a href="{{ $social.linkedin }}" target="_blank" rel="noopener">{{ partial "social-icon.html" "linkedin" }}LinkedIn</a>
       <a href="{{ $social.github }}" target="_blank" rel="noopener">{{ partial "social-icon.html" "github" }}GitHub</a>
-      <a href="mailto:{{ $social.email }}">{{ partial "social-icon.html" "email" }}{{ $social.email }}</a>
+      <a href="{{ "/contacto/" | relURL }}">{{ partial "social-icon.html" "email" }}Contacto</a>
     </div>
   </div>
 </section>

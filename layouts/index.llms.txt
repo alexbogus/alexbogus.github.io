@@ -1,0 +1,27 @@
+# {{ .Site.Title }}
+
+> {{ with .Site.Params.description }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}
+
+Sitio web personal de {{ .Site.Params.author }}: perfil profesional (CV), proyectos, ponencias y apariciones en prensa, y artículos de blog sobre ciberseguridad estratégica.
+
+## Páginas principales
+
+- [CV]({{ "cv/" | absURL }}): Trayectoria profesional, experiencia, habilidades y certificaciones.
+- [Proyectos]({{ "proyectos/" | absURL }}): Iniciativas y colaboraciones destacadas.
+- [Contacto]({{ "contacto/" | absURL }}): Datos de contacto.
+
+## Blog
+
+{{- $blog := where .Site.RegularPages "Section" "in" (slice "posts" "notes") }}
+{{- $blog = $blog.ByDate.Reverse }}
+{{- range $blog }}
+- [{{ .Title }}]({{ .Permalink }}){{ if .Date }}: {{ .Date.Format "2006-01-02" }}{{ end }}{{ with .Summary }} — {{ . | plainify | truncate 160 }}{{ end }}
+{{- end }}
+
+## Ponencias y prensa
+
+{{- $ponencias := where .Site.RegularPages "Section" "ponencias" }}
+{{- $ponencias = $ponencias.ByDate.Reverse }}
+{{- range $ponencias }}
+- [{{ .Title }}]({{ .Permalink }}){{ if .Date }}: {{ .Date.Format "2006-01-02" }}{{ end }}{{ with .Params.place }} — {{ . }}{{ end }}
+{{- end }}
