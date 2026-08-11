@@ -7,9 +7,9 @@ about:
   name: "Alejandro Aliaga Casanova"
   specialization: "Ciberseguridad · Ciberdefensa · Emergencias"
   role: "Strategic Cybersecurity & Cyberdefense Advisor | CTO"
-  availability: "Available for Advisory"
+  availability: "Consulta mis Servicios"
   tagline: >
-    Más de 25 años diseñando y desarrollando capacidades de ciberseguridad,
+    Más de 15 años diseñando y desarrollando capacidades de ciberseguridad,
     ciberdefensa y resiliencia para organizaciones y entornos críticos.
     Especializado en SOC, detección y respuesta, protección de
     infraestructuras críticas, defensa y comunicaciones resilientes para
