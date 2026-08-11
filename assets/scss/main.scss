@@ -721,8 +721,7 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .explore-card h3 { margin: 0 0 0.4rem; color: var(--text-primary); }
 .explore-card p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
 
-.contact-links { display: flex; gap: var(--space-2); flex-wrap: wrap; margin: var(--space-3) 0; }
-.contact-btn, .contact-links a {
+.contact-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -734,8 +733,8 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   font-size: 0.9rem;
   transition: border-color var(--transition), color var(--transition);
 }
-.contact-links a:hover { border-color: var(--accent); color: var(--accent); }
-.contact-btn svg, .contact-links a svg { width: 18px; height: 18px; flex-shrink: 0; }
+.contact-btn:hover { border-color: var(--accent); color: var(--accent); }
+.contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 .site-footer { border-top: 1px solid var(--border); }
 .footer-inner {

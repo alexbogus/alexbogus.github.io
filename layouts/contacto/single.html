@@ -6,10 +6,11 @@
     <div class="contact-grid">
       <div class="contact-info">
         {{ .Content }}
-        <div class="contact-links">
-          <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" class="contact-btn">{{ partial "social-icon.html" "linkedin" }}LinkedIn</a>
-          <a href="{{ $social.github }}" target="_blank" rel="noopener" class="contact-btn">{{ partial "social-icon.html" "github" }}GitHub</a>
-          <a href="{{ $social.x }}" target="_blank" rel="noopener" class="contact-btn">{{ partial "social-icon.html" "x" }}X</a>
+        <div class="social-icons">
+          <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>
+          <a href="{{ $social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>
+          <a href="{{ $social.x }}" target="_blank" rel="noopener" aria-label="X">{{ partial "social-icon.html" "x" }}</a>
+          <a href="mailto:{{ $social.email }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
         </div>
         <p class="footer-meta">{{ $social.location }}</p>
       </div>
