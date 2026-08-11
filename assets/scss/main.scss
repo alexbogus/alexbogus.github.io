@@ -379,13 +379,12 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 
 .about-text-col .profile-summary { margin-top: 0; }
 
-.about-social {
+.social-icons {
   display: flex;
   gap: var(--space-2);
-  margin: var(--space-3) 0;
 }
 
-.about-social a {
+.social-icons a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -397,8 +396,13 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   transition: color var(--transition), border-color var(--transition);
 }
 
-.about-social a:hover { color: var(--accent); border-color: var(--accent); }
-.about-social svg { width: 18px; height: 18px; flex-shrink: 0; }
+.social-icons a:hover { color: var(--accent); border-color: var(--accent); }
+.social-icons svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.about-text-col .social-icons { margin: var(--space-3) 0; }
+
+.footer-social a { width: 32px; height: 32px; }
+.footer-social svg { width: 16px; height: 16px; }
 
 @media (max-width: 720px) {
   .about-grid { grid-template-columns: 1fr; }
