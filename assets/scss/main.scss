@@ -81,7 +81,7 @@ a { color: var(--accent); }
 }
 .skip-link:focus { top: var(--space-2); }
 
-h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .specialization {
   color: var(--accent);
   font-size: 1.05rem;
@@ -767,7 +767,8 @@ h1, h2, h3 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 
 .post .content { margin-top: var(--space-4); }
 .post .content h2 { margin-top: var(--space-4); }
-.post .content p { color: var(--text-secondary); }
+.post .content p,
+.post .content li { color: var(--text-secondary); }
 
 .post .content .content-figure {
   margin: var(--space-4) 0;
