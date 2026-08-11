@@ -47,12 +47,29 @@
 <section id="about" class="section about">
   <div class="container">
     <h2 class="section-title">Sobre mí</h2>
-    <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
-    {{ range $cv.about.bio }}
-    <p>{{ . }}</p>
-    {{ end }}
-    <div class="tags">
-      {{ range $cv.about.tags }}<span class="tag">#{{ . }}</span>{{ end }}
+    <div class="about-grid">
+      <div class="about-photo-col">
+        {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
+        {{ if $aboutPhoto }}
+        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Smart q82" }}
+        <div class="about-avatar-wrap">
+          <img class="about-avatar" src="{{ $aboutPhoto.RelPermalink }}" width="{{ $aboutPhoto.Width }}" height="{{ $aboutPhoto.Height }}" alt="{{ $cv.about.name }}" loading="lazy">
+        </div>
+        <p class="about-avatar-caption">Strategic Cybersecurity &amp; Cyberdefense Advisor</p>
+        {{ end }}
+      </div>
+      <div class="about-text-col">
+        <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
+        {{ range $cv.about.bio }}
+        <p>{{ . }}</p>
+        {{ end }}
+        <div class="about-social">
+          <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>
+          <a href="{{ $social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>
+          <a href="{{ $social.x }}" target="_blank" rel="noopener" aria-label="X">{{ partial "social-icon.html" "x" }}</a>
+          <a href="mailto:{{ $social.email }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
