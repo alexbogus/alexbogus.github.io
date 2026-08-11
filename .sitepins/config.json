@@ -3,7 +3,8 @@
   "media": "assets/images",
   "public": "static",
   "configs": [
-    "hugo.toml"
+    "hugo.toml",
+    "data"
   ],
   "custom-commit": false,
   "arrangement": []
