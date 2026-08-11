@@ -1,0 +1,83 @@
+{{/* Datos estructurados Schema.org (JSON-LD). Fuente única: about.* en content/cv.md, data/social.yaml. */}}
+{{ $cv := (.Site.GetPage "/cv").Params.about }}
+{{ $social := hugo.Data.social }}
+{{ $home := .Site.Home.Permalink }}
+
+{{ $person := dict
+  "@type" "Person"
+  "name" $cv.name
+  "url" $home
+  "jobTitle" $cv.role
+  "description" $cv.tagline
+  "worksFor" (dict "@type" "Organization" "name" "Ontinet.com")
+  "sameAs" (slice $social.linkedin $social.github $social.x)
+  "knowsAbout" $cv.expertise
+}}
+{{ $languages := slice }}
+{{ range (.Site.GetPage "/cv").Params.skills.languages }}{{ $languages = $languages | append .name }}{{ end }}
+{{ if $languages }}{{ $person = merge $person (dict "knowsLanguage" $languages) }}{{ end }}
+
+{{ if .IsHome }}
+<script type="application/ld+json">
+{{ (dict
+  "@context" "https://schema.org"
+  "@graph" (slice
+    (merge (dict "@id" (print $home "#person")) $person)
+    (dict
+      "@type" "WebSite"
+      "name" .Site.Title
+      "url" $home
+      "author" (dict "@id" (print $home "#person"))
+      "publisher" (dict "@id" (print $home "#person"))
+    )
+  )
+) | jsonify | safeJS }}
+</script>
+{{ else }}
+<script type="application/ld+json">
+{{ merge (dict "@context" "https://schema.org") $person | jsonify | safeJS }}
+</script>
+
+{{ if and .IsPage (in (slice "posts" "notes") .Section) }}
+{{ $blogPosting := dict
+  "@context" "https://schema.org"
+  "@type" "BlogPosting"
+  "headline" .Title
+  "description" (cond (ne .Description "") .Description .Summary)
+  "url" .Permalink
+  "datePublished" (.Date.Format "2006-01-02")
+  "dateModified" (cond (.Lastmod.After .Date) (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02"))
+  "author" (merge (dict "@type" "Person") $person)
+  "keywords" (delimit .Params.tags ", ")
+}}
+{{ with .Resources.GetMatch "cover*" }}{{ $blogPosting = merge $blogPosting (dict "image" .Permalink) }}{{ end }}
+<script type="application/ld+json">
+{{ $blogPosting | jsonify | safeJS }}
+</script>
+{{ else }}
+<script type="application/ld+json">
+{{ (dict
+  "@context" "https://schema.org"
+  "@type" "WebPage"
+  "name" .Title
+  "description" (cond (ne .Description "") .Description .Site.Params.description)
+  "url" .Permalink
+) | jsonify | safeJS }}
+</script>
+{{ end }}
+
+{{ if and .IsPage (in (slice "posts" "notes" "ponencias" "proyectos") .Section) }}
+{{ $sectionPage := .Site.GetPage .Section }}
+<script type="application/ld+json">
+{{ (dict
+  "@context" "https://schema.org"
+  "@type" "BreadcrumbList"
+  "itemListElement" (slice
+    (dict "@type" "ListItem" "position" 1 "name" "Inicio" "item" $home)
+    (dict "@type" "ListItem" "position" 2 "name" $sectionPage.Title "item" $sectionPage.Permalink)
+    (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink)
+  )
+) | jsonify | safeJS }}
+</script>
+{{ end }}
+{{ end }}

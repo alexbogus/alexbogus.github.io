@@ -1,6 +1,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-{{ $title := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
+{{ $title := cond .IsHome (printf "%s | Ciberseguridad y Ciberdefensa" .Site.Title) (printf "%s | %s" .Title .Site.Title) }}
 <title>{{ $title }}</title>
 {{ $description := cond (ne .Description "") .Description .Site.Params.description }}
 <meta name="description" content="{{ $description }}" />

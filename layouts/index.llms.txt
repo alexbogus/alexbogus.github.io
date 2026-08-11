@@ -4,6 +4,13 @@
 
 Sitio web personal de {{ .Site.Params.author }}: perfil profesional (CV), proyectos, ponencias y apariciones en prensa, y artículos de blog sobre ciberseguridad estratégica.
 
+## Areas of expertise
+
+{{- $expertise := (.Site.GetPage "/cv").Params.about.expertise }}
+{{- range $expertise }}
+- {{ . }}
+{{- end }}
+
 ## Páginas principales
 
 - [CV]({{ "cv/" | absURL }}): Trayectoria profesional, experiencia, habilidades y certificaciones.

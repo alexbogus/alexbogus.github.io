@@ -1,16 +1,19 @@
 ---
 title: "Currículum"
-description: "Portfolio profesional de Alejandro Aliaga Casanova. Strategic SOC Advisor, CTO & CISO Fractional."
+description: "Alejandro Aliaga Casanova, Strategic Cybersecurity & Cyberdefense Advisor y CTO especializado en ciberseguridad, ciberdefensa, SOC, sistemas críticos, defensa y emergencias."
 type: cv
 url: /cv/
 about:
-  greeting: "Hola, soy"
   name: "Alejandro Aliaga Casanova"
-  role: "Strategic SOC Advisor & CTO"
+  specialization: "Ciberseguridad · Ciberdefensa · Emergencias"
+  role: "Strategic Cybersecurity & Cyberdefense Advisor | CTO"
   availability: "Available for Advisory"
   tagline: >
-    Executive Cybersecurity Leader con más de 20 años de experiencia diseñando
-    y gestionando capacidades de seguridad estratégicas y tecnológicas.
+    Más de 25 años diseñando y desarrollando capacidades de ciberseguridad,
+    ciberdefensa y resiliencia para organizaciones y entornos críticos.
+    Especializado en SOC, detección y respuesta, protección de
+    infraestructuras críticas, defensa y comunicaciones resilientes para
+    emergencias.
   profile_summary: >
     Estratega tecnológico enfocado en la alineación de la ciberseguridad con
     los objetivos de negocio. +8 SOCs diseñados y desplegados.
@@ -25,11 +28,25 @@ about:
       Perfil multidisciplinar con profundos conocimientos tecnológicos que me
       han permitido convertirme en asesor estratégico para la alta dirección.
     - >
+      Mi trabajo se extiende también a la ciberdefensa y a entornos críticos:
+      he liderado la ciberseguridad de soluciones de vigilancia con drones
+      (Vig-Sec Drone) y he participado como ponente en foros sobre
+      ciberdefensa, resiliencia de comunicaciones y transformación digital de
+      las Fuerzas Armadas.
+    - >
       Mi trayectoria profesional me ha llevado a desempeñar mis funciones en
       ciudades como Valencia, Barcelona, Madrid y Roma; además, he tenido la
       oportunidad de colaborar activamente en proyectos internacionales en
       Alemania, Italia y EEUU.
-  tags: ["SOC", "Infosec", "Strategy", "CISO"]
+  expertise:
+    - "Ciberseguridad"
+    - "Ciberdefensa"
+    - "Security Operations / SOC"
+    - "Protección de Infraestructuras Críticas"
+    - "Resiliencia"
+    - "Comunicaciones de Emergencia"
+    - "Drones / UAS"
+  tags: ["SOC", "Ciberdefensa", "Resiliencia", "Infraestructuras Críticas", "CISO"]
   location: "Valencia, España"
 
 experience:

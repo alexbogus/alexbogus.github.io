@@ -4,7 +4,7 @@
 {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
 
 <section class="hero">
-  {{ $heroBg := resources.Get "images/hero-bg.jpg" }}
+  {{ $heroBg := resources.Get "images/background-telecom.jpeg" }}
   {{ if $heroBg }}
   {{ $heroBg := $heroBg.Resize "2400x q82" }}
   <img class="hero-bg" src="{{ $heroBg.RelPermalink }}" alt="" role="presentation">
@@ -12,12 +12,13 @@
   <div class="hero-overlay"></div>
   <div class="container hero-content">
     <p class="badge">{{ $cv.about.availability }}</p>
-    <h1>{{ $cv.about.greeting }} {{ $cv.about.name }}</h1>
+    <h1>{{ $cv.about.name }}</h1>
+    <p class="specialization">{{ $cv.about.specialization }}</p>
     <h2 class="role">{{ $cv.about.role }}</h2>
     <p class="tagline">{{ $cv.about.tagline }}</p>
     <div class="hero-actions">
       <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
-      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver Currículum</a>
+      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver trayectoria</a>
     </div>
   </div>
 </section>

@@ -94,6 +94,23 @@ content/proyectos/nombre-del-proyecto/
 
 `period` aparece en la tarjeta del listado en vez del tiempo de lectura. `links` es opcional — si lo rellenas, se muestra una sección "Referencias" al final de la ficha del proyecto con un botón por enlace. El cuerpo del Markdown (debajo del front matter) es el contenido detallado del proyecto.
 
+### Imágenes dentro del cuerpo
+
+Además de la portada (`cover.*`), puedes insertar más imágenes en medio del texto del proyecto (o de un post/nota): cópialas en la misma carpeta del page bundle y referéncialas con Markdown estándar. El pie de foto es opcional, usando el título entre comillas:
+
+```
+content/proyectos/nombre-del-proyecto/
+├── index.md
+├── cover.jpg
+└── diagrama.jpg
+```
+
+```markdown
+![Diagrama de arquitectura](diagrama.jpg "Arquitectura del sistema en su versión final")
+```
+
+Se renderizan automáticamente con el mismo estilo visual que la portada (borde, esquinas redondeadas) y, si hay título, con un pie de foto centrado debajo.
+
 ## 4. Nueva ponencia
 
 `/ponencias/` sustituye a la antigua "Charlas y Publicaciones". Cada ponencia es una página independiente, y el listado las agrupa automáticamente por mes y año (con un índice rápido arriba para saltar directo a un año o mes).

@@ -1,4 +1,4 @@
 ---
 title: "Alejandro Aliaga Casanova"
-description: "Strategic SOC Advisor, CTO & CISO Fractional. Experto en ciberseguridad estratégica y gestión de riesgos."
+description: "Alejandro Aliaga Casanova, Strategic Cybersecurity & Cyberdefense Advisor y CTO especializado en ciberseguridad, ciberdefensa, SOC, sistemas críticos, defensa y emergencias."
 ---
