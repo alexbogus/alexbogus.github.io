@@ -410,6 +410,17 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   .about-avatar-wrap { max-width: 200px; }
 }
 
+// En /cv/ la bio es más larga que en portada: la foto se queda fija
+// (sticky) mientras el texto continúa, en vez de dejar un hueco vacío
+// bajo una columna mucho más corta que la del texto.
+.about--cv .about-grid { align-items: start; }
+@media (min-width: 721px) {
+  .about--cv .about-photo-col {
+    position: sticky;
+    top: calc(var(--space-4) * 2);
+  }
+}
+
 // ------------------------------------------------------------
 // Hero (home) — fondo fotográfico a pantalla completa.
 // Deliberadamente ajeno al toggle claro/oscuro: la imagen es
@@ -565,22 +576,142 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 }
 
 // ------------------------------------------------------------
-// Timeline (CV)
+// Timeline (CV) — ficha de dos columnas por experiencia.
+// Sin líneas divisorias entre entradas: el espaciado y la tarjeta
+// de datos rápidos a la izquierda ya marcan el ritmo visual.
 // ------------------------------------------------------------
-.timeline-item {
-  padding: var(--space-3) 0;
-  border-top: 1px solid var(--border);
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
 }
-.timeline-item:first-child { border-top: none; }
-.timeline-item h3 { margin: 0 0 0.2rem; }
-.timeline-item .company { color: var(--accent); font-weight: 600; }
-.timeline-item .meta {
+
+.job-card {
+  display: grid;
+  grid-template-columns: minmax(140px, 180px) 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-4) var(--space-3);
+  border-radius: var(--radius-card);
+}
+
+// Zebra striping muy sutil (como filas de tabla) para separar cada
+// experiencia sin recurrir a líneas divisorias.
+.job-card:nth-child(even) { background: var(--surface); }
+.job-card:nth-child(odd) { background: color-mix(in srgb, var(--surface) 45%, transparent); }
+
+// Columna izquierda: ficha de datos rápidos. Fondo oscuro fijo,
+// independiente del tema claro/oscuro del sitio: varios logotipos
+// de empresa solo existen en versión clara pensada para navbars
+// oscuras, así que un fondo propio y constante evita perseguir una
+// variante distinta para cada marca y da cohesión visual al listado.
+.job-facts {
+  --job-facts-bg: #1c1a17;
+  --job-facts-border: #33302a;
+  --job-facts-text: rgba(245, 242, 234, 0.92);
+  --job-facts-text-muted: rgba(245, 242, 234, 0.56);
+
+  background: var(--job-facts-bg);
+  border: 1px solid var(--job-facts-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.job-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-control);
+  background: rgba(245, 242, 234, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.job-logo img {
+  display: block;
+  max-width: 82%;
+  max-height: 82%;
+  object-fit: contain;
+}
+.job-logo-fallback {
+  width: 26px;
+  height: 26px;
+  color: var(--job-facts-text-muted);
+}
+
+.job-dates {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--job-facts-text);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.job-date-sep {
+  width: 1px;
+  height: 10px;
+  background: var(--job-facts-border);
+  margin: 0.15rem 0;
+}
+.job-date-end:empty::before {
+  content: 'Presente';
+  color: var(--accent-strong);
+}
+
+.job-role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--job-facts-text);
+}
+
+.job-details h3 { margin: 0 0 0.2rem; }
+.job-details .company { color: var(--accent); font-weight: 600; }
+.job-details .meta {
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--text-muted);
   margin: 0.3rem 0 0.6rem;
 }
 .job-desc { margin: 0.5rem 0; padding-left: 1.1rem; color: var(--text-secondary); }
+
+@media (max-width: 640px) {
+  .job-card {
+    grid-template-columns: auto 1fr;
+  }
+  .job-facts {
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+    padding: 0.6rem;
+    gap: 0.7rem;
+  }
+  .job-logo { width: 40px; height: 40px; }
+  .job-dates { flex-direction: row; gap: 0.3rem; font-size: 0.7rem; }
+  .job-date-sep { width: 8px; height: 1px; margin: 0; }
+  .job-role { display: none; }
+}
+
+@media print {
+  // Varios logotipos solo existen en versión clara (pensada para el
+  // fondo oscuro fijo de .job-facts): forzamos que el navegador
+  // imprima ese fondo, si no, esos logos desaparecerían sobre el
+  // blanco de la página impresa.
+  .job-facts {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 0.5rem;
+  }
+  .job-card { grid-template-columns: 90px 1fr; gap: var(--space-2); break-inside: avoid; }
+  .job-logo { width: 40px; height: 40px; }
+  .timeline { gap: var(--space-3); }
+}
 
 // ------------------------------------------------------------
 // Skills
@@ -598,6 +729,72 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 
 .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-1); margin-bottom: var(--space-4); }
 .cert-item { display: block; }
+
+// ------------------------------------------------------------
+// Logros Destacados (Achievements)
+// ------------------------------------------------------------
+.achievements-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}
+.achievements-list li {
+  position: relative;
+  padding: var(--space-2) var(--space-3) var(--space-2) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+.achievements-list li::before {
+  content: '';
+  position: absolute;
+  left: var(--space-2);
+  top: 1.3rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+// ------------------------------------------------------------
+// Compromiso Estratégico (Engagement)
+// ------------------------------------------------------------
+.engagement-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.engagement-item {
+  border-left: 2px solid var(--accent);
+  padding: 0.2rem 0 0.2rem var(--space-3);
+}
+.engagement-title { font-weight: 600; }
+.engagement-org {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0.15rem 0 0.4rem;
+}
+.engagement-desc { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
+
+// ------------------------------------------------------------
+// Contact CTA (cierre del CV)
+// ------------------------------------------------------------
+.contact-cta {
+  text-align: center;
+  border-bottom: none;
+}
+.contact-cta .section-title { margin-bottom: var(--space-2); }
+.contact-cta p {
+  max-width: 52ch;
+  margin: 0 auto var(--space-4);
+  color: var(--text-secondary);
+}
 
 // ------------------------------------------------------------
 // Ponencias — grid de tarjetas + filtros por tipo, año y mes

@@ -1,36 +1,83 @@
 {{ define "main" }}
 {{ $cv := .Params }}
 
-<section id="about" class="section about">
+<section id="about" class="section about about--cv">
   <div class="container">
     <h1>{{ $cv.about.name }}</h1>
     <p class="specialization">{{ $cv.about.specialization }}</p>
     <h2 class="role">{{ $cv.about.role }}</h2>
-    <p class="tagline">{{ $cv.about.tagline }}</p>
-    <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
-    {{ range $cv.about.bio }}
-    <p>{{ . }}</p>
-    {{ end }}
-    <div class="tags">
-      {{ range $cv.about.tags }}<span class="tag">#{{ . }}</span>{{ end }}
+    <div class="about-grid">
+      <div class="about-photo-col">
+        {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
+        {{ if $aboutPhoto }}
+        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Smart q82" }}
+        <div class="about-avatar-wrap">
+          <img class="about-avatar" src="{{ $aboutPhoto.RelPermalink }}" width="{{ $aboutPhoto.Width }}" height="{{ $aboutPhoto.Height }}" alt="{{ $cv.about.name }}" loading="lazy">
+        </div>
+        <p class="about-avatar-caption">{{ $cv.about.role }}</p>
+        {{ end }}
+      </div>
+      <div class="about-text-col">
+        <p class="tagline">{{ $cv.about.tagline }}</p>
+        <p class="profile-summary">{{ $cv.about.profile_summary }}</p>
+        {{ range $cv.about.bio }}
+        <p>{{ . }}</p>
+        {{ end }}
+      </div>
     </div>
   </div>
 </section>
+
+{{ if $cv.about.achievements }}
+<section id="achievements" class="section achievements">
+  <div class="container">
+    <h2 class="section-title">Logros Destacados</h2>
+    <ul class="achievements-list">
+      {{ range $cv.about.achievements }}<li>{{ . }}</li>{{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}
 
 <section id="experience" class="section experience">
   <div class="container">
     <h2 class="section-title">Experiencia Profesional</h2>
     <div class="timeline">
       {{ range $cv.experience }}
-      <div class="timeline-item">
-        <h3>{{ .title }}</h3>
-        <div class="company">{{ .company }}</div>
-        <div class="meta"><span>{{ .period }}</span> <span>{{ .location }}</span></div>
-        <ul class="job-desc">
-          {{ range .description }}<li>{{ . }}</li>{{ end }}
-        </ul>
-        <div class="job-tags">
-          {{ range .tags }}<span>{{ . }}</span>{{ end }}
+      {{ $dates := split .period " - " }}
+      {{ $company := .company }}
+      <div class="job-card">
+        <div class="job-facts">
+          <div class="job-logo">
+            {{ if .logo }}
+            {{ with resources.Get .logo }}
+            <img src="{{ .RelPermalink }}" alt="{{ $company }}" loading="lazy">
+            {{ end }}
+            {{ else }}
+            <svg class="job-logo-fallback" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <rect x="2.5" y="7.5" width="19" height="12.5" rx="2"/>
+              <path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5"/>
+              <path d="M2.5 13h19"/>
+            </svg>
+            {{ end }}
+          </div>
+          <div class="job-dates">
+            <span class="job-date-start">{{ index $dates 0 }}</span>
+            <span class="job-date-sep" aria-hidden="true"></span>
+            <span class="job-date-end">{{ if gt (len $dates) 1 }}{{ index $dates 1 }}{{ end }}</span>
+          </div>
+          <div class="job-role">{{ .title }}</div>
+        </div>
+        <div class="job-details">
+          <h3>{{ .title }}</h3>
+          <div class="company">{{ .company }}</div>
+          <div class="meta"><span>{{ .period }}</span> <span>{{ .location }}</span></div>
+          <ul class="job-desc">
+            {{ range .description }}<li>{{ . }}</li>{{ end }}
+          </ul>
+          <div class="job-tags">
+            {{ range .tags }}<span>{{ . }}</span>{{ end }}
+          </div>
         </div>
       </div>
       {{ end }}
@@ -73,21 +120,29 @@
   </div>
 </section>
 
-<section id="certs" class="section certifications">
+{{ if $cv.about.engagements }}
+<section id="engagement" class="section engagement">
   <div class="container">
-    <h2 class="section-title">Certificaciones</h2>
-    <div class="cert-grid">
-      {{ range $cv.certifications }}<div class="cert-item">✓ {{ . }}</div>{{ end }}
+    <h2 class="section-title">Colaboraciones</h2>
+    <div class="engagement-list">
+      {{ range $cv.about.engagements }}
+      <div class="engagement-item">
+        <div class="engagement-title">{{ .title }}</div>
+        <div class="engagement-org">{{ .org }}</div>
+        <p class="engagement-desc">{{ .description }}</p>
+      </div>
+      {{ end }}
     </div>
-
     <p><a href="{{ "/ponencias/" | relURL }}">Ver todas las ponencias &rarr;</a></p>
   </div>
 </section>
+{{ end }}
 
-<section class="section print-section">
+<section class="section contact-cta">
   <div class="container">
-    <a class="btn" href="{{ "/cv/" | relURL }}" onclick="window.print(); return false;">Descargar / Imprimir CV</a>
-    <small>Formato PDF optimizado para impresión</small>
+    <h2 class="section-title">¿Hablamos?</h2>
+    <p>Si buscas un perfil ejecutivo en ciberseguridad, ciberdefensa o desarrollo de negocio para tu organización, hablemos directamente.</p>
+    <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
   </div>
 </section>
 {{ end }}
