@@ -697,6 +697,18 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 .contact-btn:hover { border-color: var(--accent); color: var(--accent); }
 .contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
+.contact-btn--external {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 600;
+}
+.contact-btn--external:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: var(--accent-contrast);
+}
+
 .site-footer { border-top: 1px solid var(--border); }
 .footer-inner {
   display: flex;
@@ -819,6 +831,31 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   font-size: 0.85rem;
   color: var(--text-muted);
 }
+
+.post .content .embed-spotify {
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.post .content .embed-spotify iframe {
+  display: block;
+  border: none;
+}
+
+.post .content blockquote {
+  margin: var(--space-4) 0;
+  padding: var(--space-2) var(--space-3);
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+.post .content blockquote p {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+}
+.post .content blockquote p:last-child { margin-bottom: 0; }
 
 .post-cover {
   border-radius: var(--radius-card);

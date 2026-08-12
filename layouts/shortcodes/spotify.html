@@ -1,0 +1,13 @@
+{{- $src := .Get "src" | default (.Get 0) -}}
+{{- $height := .Get "height" | default "232" -}}
+<div class="embed-spotify">
+  <iframe
+    src="{{ $src }}"
+    width="100%"
+    height="{{ $height }}"
+    frameborder="0"
+    allowfullscreen
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
+</div>

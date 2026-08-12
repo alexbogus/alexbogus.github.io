@@ -12,3 +12,9 @@ links:
 tags: ["Prensa"]
 draft: false
 ---
+
+Los sistemas tradicionales de protección, como los antivirus y firewalls instalados en los equipos, siguen siendo útiles, pero ya no resultan suficientes frente a la creciente complejidad de los ciberataques. En este escenario, los proveedores de servicios de Internet (ISP) se convierten en actores clave: al gestionar enormes volúmenes de tráfico, tienen la capacidad de detectar comportamientos irregulares en la red que pasan inadvertidos para los usuarios. Esto les otorga un papel esencial en la defensa de ciudadanos y organizaciones ante amenazas que operan de manera invisible.
+
+El panorama actual refuerza esta necesidad: en 2024, el tráfico procedente de bots automatizados superó por primera vez al generado por personas, representando el 51% del total del tráfico web. De esa cifra, un 37% fue identificado como malicioso, de acuerdo con el Informe de Imperva sobre bots maliciosos 2025. Este dato evidencia la urgencia de fortalecer la seguridad desde la propia infraestructura de Internet.
+
+> "Un Centro de Operaciones de Seguridad (SOC) es clave para que los ISP puedan dar un salto cualitativo en la detección y respuesta ante incidentes”, explica Alejandro Aliaga, CTO de Ontinet.com, distribuidor oficial de ESET en España. “En un SOC confluyen diferentes capacidades: sistemas basados en inteligencia artificial capaces de identificar patrones que escapan al ojo humano, inteligencia de amenazas en forma de listas de bloqueo, dominios y direcciones IP maliciosas, y la experiencia de los analistas para coordinar la respuesta. Gracias a esta combinación, el ISP se convierte en la primera línea de defensa frente al cibercrimen”.

@@ -1,6 +1,12 @@
 {{ define "main" }}
+{{ $cover := .Resources.GetMatch "cover*" }}
 <article class="section post">
   <div class="container">
+    {{ if $cover }}
+    {{ $coverFill := $cover.Fill "1200x630 q82" }}
+    <div class="post-cover"><img src="{{ $coverFill.RelPermalink }}" alt=""></div>
+    {{ end }}
+
     <h1>{{ .Title }}</h1>
     <div class="post-meta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
@@ -13,16 +19,18 @@
 
     <div class="content">{{ .Content }}</div>
 
-    {{ with .Params.link }}
-    <p><a href="{{ . }}" target="_blank" rel="noopener" class="contact-btn">Ver enlace externo</a></p>
-    {{ end }}
-
-    {{ with .Params.links }}
+    {{ if or .Params.link .Params.links }}
     <div class="ref-links">
-      <h2 class="ref-links-title">Referencias</h2>
+      <h2 class="ref-links-title">Enlaces externos</h2>
       <div class="ref-links-grid">
-        {{ range . }}
-        <a href="{{ .url }}" target="_blank" rel="noopener" class="contact-btn">
+        {{ with .Params.link }}
+        <a href="{{ . }}" target="_blank" rel="noopener" class="contact-btn contact-btn--external">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          Leer la noticia completa
+        </a>
+        {{ end }}
+        {{ range .Params.links }}
+        <a href="{{ .url }}" target="_blank" rel="noopener" class="contact-btn contact-btn--external">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           {{ .label }}
         </a>

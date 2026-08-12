@@ -14,3 +14,13 @@ links:
 tags: ["Prensa"]
 draft: false
 ---
+
+Ontinet.com, empresa experta en ciberseguridad y distribuidor exclusivo en España y Andorra de la marca ESET, ha anunciado la incorporación de Alejandro Aliaga Casanova como nuevo chief technology officer (CTO).
+
+Con más de 25 años de carrera profesional en el sector, Aliaga ha colaborado con organizaciones internacionales de banca, administración pública, seguros y con empresas del IBEX35 desarrollando proyectos de transformación tecnológica, gestión de riesgos y asesoramiento estratégico a alta dirección.
+
+Ha participado activamente en proyectos europeos dentro del marco H2020, incluyendo iniciativas como S4Allcities y CC-Driver Project, centradas en la ciberseguridad y las ciudades inteligentes, y participó en el grupo de trabajo itSM4Security en itSMF España en 2020.
+
+Ha sido miembro de la Red REMER y ha trabajado en simulaciones de desastres naturales y como mentor en iniciativas como la CyberLeague de la Guardia Civil, contribuyendo a la formación de nuevas generaciones de expertos en ciberseguridad.
+
+En el ámbito académico, ha impartido master classes sobre tendencias en ciberseguridad en la Universitat de València, la Universidad Internacional de Valencia y EDEM (Escuela de Empresarios), ha participado en congresos y foros y ha publicado artículos en medios especializados.
