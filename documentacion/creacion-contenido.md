@@ -113,7 +113,9 @@ Se renderizan automáticamente con el mismo estilo visual que la portada (borde,
 
 ## 4. Nueva ponencia
 
-`/ponencias/` sustituye a la antigua "Charlas y Publicaciones". Cada ponencia es una página independiente, y el listado las agrupa automáticamente por mes y año (con un índice rápido arriba para saltar directo a un año o mes).
+`/ponencias/` sustituye a la antigua "Charlas y Publicaciones". Cada ponencia es una página independiente y el listado se muestra como un grid de tarjetas (igual que blog/proyectos), filtrable por tipo (Todas/Ponencias/Prensa), por año y por mes a la vez.
+
+Crea siempre la ponencia como carpeta (page bundle), para poder añadirle imagen:
 
 ```bash
 hugo new ponencias/nombre-del-evento/index.md
@@ -124,10 +126,11 @@ Front matter:
 ```yaml
 ---
 title: "Nombre de la charla o conferencia"
-date: 2026-02-10   # ← la fecha real del evento; determina el grupo mes/año
+date: 2026-02-10   # ← la fecha real del evento; determina el filtro de año/mes
 place: "ISMS Forum, Madrid"
+summary: "Una frase para la tarjeta del listado."
 link: ""            # opcional: si lo rellenas, el título enlaza directo ahí en vez de a una ficha propia
-tags: []
+tags: []             # "Ponencia" y/o "Prensa" — determina el filtro de tipo
 draft: true          # ← cámbialo a false cuando quieras publicarlo
 ---
 ```
@@ -135,6 +138,28 @@ draft: true          # ← cámbialo a false cuando quieras publicarlo
 - Si rellenas `link` (por ejemplo el vídeo, las diapositivas o la noticia del evento), el título en el listado enlaza directamente ahí.
 - Si lo dejas vacío, el título enlaza a la ficha propia de la ponencia (`layouts/ponencias/single.html`), donde puedes escribir contenido adicional en Markdown debajo del front matter.
 - `data/cv.yaml` no tiene campo de publicaciones — todo vive en `content/ponencias/`.
+
+### Imagen destacada
+
+Igual que en el blog y los proyectos: copia una imagen dentro de la carpeta con un nombre que empiece por `cover` y se recoge automáticamente en la tarjeta del listado.
+
+```
+content/ponencias/nombre-del-evento/
+├── index.md
+└── cover.jpg
+```
+
+Recomendación: usa una imagen ~1200×630 (horizontal), llamativa, y no subas archivos enormes — si es una foto de cámara/móvil, redúcela antes (por ejemplo con Vista Previa → Exportar, o `sips -Z 1600 foto.jpg`). Si no añades imagen, la tarjeta muestra un fallback automático (degradado + tipo/título), así que nunca queda vacía.
+
+### Embeber un vídeo de YouTube
+
+Solo tiene sentido si dejas `link` vacío (para que el título use la ficha propia en vez de saltar directo al enlace). En el cuerpo Markdown, debajo del front matter, usa el shortcode nativo de Hugo:
+
+```markdown
+{{< youtube ID >}}
+```
+
+El `ID` es la parte de la URL después de `v=`, por ejemplo en `https://www.youtube.com/watch?v=mJYhCYfVpXE` el ID es `mJYhCYfVpXE`. Mismo patrón ya usado en varios posts del blog (`content/posts/incidentes-gnss-parte-4/index.md`).
 
 ## 5. Modificar el CV
 

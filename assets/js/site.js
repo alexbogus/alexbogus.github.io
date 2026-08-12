@@ -9,29 +9,42 @@
   }
 
   var ponenciasFilter = document.querySelector('.ponencias-filter');
-  if (ponenciasFilter) {
-    var applyFilter = function (value) {
-      var items = document.querySelectorAll('.ponencia-item');
-      items.forEach(function (item) {
-        var tags = (item.getAttribute('data-tags') || '');
-        var match = value === 'all' || tags.indexOf(value) !== -1;
-        if (match) item.removeAttribute('hidden'); else item.setAttribute('hidden', '');
+  var yearFilter = document.getElementById('ponencias-year-filter');
+  var monthFilter = document.getElementById('ponencias-month-filter');
+  var ponenciasEmpty = document.querySelector('.ponencias-empty');
+  if (ponenciasFilter && yearFilter && monthFilter) {
+    var applyFilters = function () {
+      var typeValue = (document.querySelector('input[name="ponencias-filter"]:checked') || {}).value || 'all';
+      var yearValue = yearFilter.value;
+      var monthValue = monthFilter.value;
+      var visibleCount = 0;
+
+      document.querySelectorAll('.ponencia-card').forEach(function (card) {
+        var tags = card.getAttribute('data-tags') || '';
+        var year = card.getAttribute('data-year') || '';
+        var month = card.getAttribute('data-month') || '';
+        var match = (typeValue === 'all' || tags.indexOf(typeValue) !== -1) &&
+          (yearValue === 'all' || year === yearValue) &&
+          (monthValue === 'all' || month === monthValue);
+        if (match) {
+          card.removeAttribute('hidden');
+          visibleCount += 1;
+        } else {
+          card.setAttribute('hidden', '');
+        }
       });
 
-      document.querySelectorAll('.ponencias-group').forEach(function (group) {
-        var visible = group.querySelectorAll('.ponencia-item:not([hidden])').length > 0;
-        if (visible) group.removeAttribute('hidden'); else group.setAttribute('hidden', '');
-      });
-
-      document.querySelectorAll('.ponencias-year').forEach(function (year) {
-        var visible = year.querySelectorAll('.ponencia-item:not([hidden])').length > 0;
-        if (visible) year.removeAttribute('hidden'); else year.setAttribute('hidden', '');
-      });
+      if (ponenciasEmpty) {
+        if (visibleCount === 0) ponenciasEmpty.removeAttribute('hidden');
+        else ponenciasEmpty.setAttribute('hidden', '');
+      }
     };
 
     ponenciasFilter.addEventListener('change', function (e) {
-      if (e.target && e.target.name === 'ponencias-filter') applyFilter(e.target.value);
+      if (e.target && e.target.name === 'ponencias-filter') applyFilters();
     });
+    yearFilter.addEventListener('change', applyFilters);
+    monthFilter.addEventListener('change', applyFilters);
   }
 
   var contactForm = document.getElementById('contact-form');
