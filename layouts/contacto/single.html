@@ -25,6 +25,7 @@
           <label for="contact-message">Mensaje</label>
           <textarea id="contact-message" name="message" rows="5" required></textarea>
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_next" value="{{ .Permalink }}?enviado=1">
           <button type="submit" class="btn">Enviar mensaje</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>

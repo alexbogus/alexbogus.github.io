@@ -50,27 +50,10 @@
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
     var status = contactForm.querySelector('.form-status');
-    contactForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      status.textContent = 'Enviando…';
-      status.className = 'form-status';
-      fetch(contactForm.action, {
-        method: 'POST',
-        body: new FormData(contactForm),
-        headers: { Accept: 'application/json' }
-      }).then(function (response) {
-        if (response.ok) {
-          status.textContent = 'Gracias, tu mensaje se ha enviado correctamente.';
-          status.className = 'form-status form-status-success';
-          contactForm.reset();
-        } else {
-          status.textContent = 'No se ha podido enviar el mensaje. Inténtalo de nuevo o escribe directamente por email.';
-          status.className = 'form-status form-status-error';
-        }
-      }).catch(function () {
-        status.textContent = 'No se ha podido enviar el mensaje. Inténtalo de nuevo o escribe directamente por email.';
-        status.className = 'form-status form-status-error';
-      });
-    });
+    if (window.location.search.indexOf('enviado=1') !== -1) {
+      status.textContent = 'Gracias, tu mensaje se ha enviado correctamente.';
+      status.className = 'form-status form-status-success';
+      window.history.replaceState(null, '', window.location.pathname);
+    }
   }
 })();
