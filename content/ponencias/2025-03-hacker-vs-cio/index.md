@@ -11,7 +11,7 @@ links:
     url: "https://www.linkedin.com/posts/inforges_inforges-ciberseguridad-murcia-activity-7302338682068385793-qMwo"
   - label: "Inforges - Hacker vs CIO (evento)"
     url: "https://inforges.es/eventos/hacker-vs-cio/"
-tags: ["Ponencia", "Prensa"]
+tags: ["Ponencia"]
 draft: false
 ---
 
