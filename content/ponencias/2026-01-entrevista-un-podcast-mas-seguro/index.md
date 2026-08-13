@@ -1,6 +1,6 @@
 ---
 title: "Entrevista Un Podcast Mas Seguro"
-date: 2026-08-12T13:44:28+02:00
+date: 2026-01-29T13:44:28+02:00
 place: "Barcelona"
 link: ""
 tags: ["Ponencia", "Entrevista"]
