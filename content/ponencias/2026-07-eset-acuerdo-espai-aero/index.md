@@ -9,6 +9,10 @@ links:
     url: "https://www.ituser.es/seguridad/2026/08/eset-impulsara-la-ciberresiliencia-del-sector-aeroespacial-valenciano"
   - label: "ESET y Espai Aero CV se alían para reforzar la ciberseguridad del sector aeroespacial valenciano"
     url: "https://actualidadaeroespacial.com/eset-y-espai-aero-cv-se-alian-para-reforzar-la-ciberseguridad-del-sector-aeroespacial-valenciano/"
+  - label: "ESET y Espai Aero CV se alían para reforzar la ciberseguridad del sector aeroespacial valenciano"
+    url: "https://economia3.com/espai-aero-cv-y-eset-ciberseguridad-aeroespacial/"
+  - label: "ESET y Espai Aero CV se alían para reforzar la ciberseguridad del sector aeroespacial valenciano"
+    url: "https://www.economiadigital.es/valencia/empresas/espai-aero-cv-eset-alian-reforzar-ciberseguridad-ecosistema-aeroespacial-valenciano.html"
 tags: ["Prensa"]
 draft: false
 ---
