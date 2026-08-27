@@ -238,13 +238,6 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 }
 .btn:hover { background: var(--accent-strong); transform: translateY(-1px); }
 
-.btn-outline {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border);
-}
-.btn-outline:hover { background: var(--surface); border-color: var(--accent); }
-
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -313,7 +306,9 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   border-radius: var(--radius-pill);
   padding: 0.3rem 0.8rem;
   margin-bottom: var(--space-3);
+  text-decoration: none;
 }
+a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
 .badge::before {
   content: '';
   width: 6px; height: 6px;
@@ -398,6 +393,8 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 
 .social-icons a:hover { color: var(--accent); border-color: var(--accent); }
 .social-icons svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.about-avatar-social { justify-content: center; margin-top: var(--space-2); }
 
 .about-text-col .social-icons { margin: var(--space-3) 0; }
 
@@ -564,12 +561,11 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
   background: var(--hero-accent);
   color: #12160f;
 }
-.hero .btn:hover { background: #a3d6c0; }
-.hero .btn-outline {
-  color: var(--hero-text);
-  border-color: rgba(245, 242, 234, 0.4);
+.hero .btn:hover {
+  background: #a3d6c0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(139, 196, 172, 0.4);
 }
-.hero .btn-outline:hover { background: rgba(245, 242, 234, 0.08); border-color: var(--hero-text); }
 
 @media (max-width: 760px) {
   .hero { min-height: 78vh; }
@@ -972,7 +968,7 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 }
 
 .post-card h2, .post h1 { margin: 0; font-size: 1.15rem; }
-.post h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.post h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: var(--space-2); }
 
 .post-card p, .post .summary { color: var(--text-secondary); font-size: 0.9rem; margin: 0; }
 
@@ -989,6 +985,21 @@ h1, h2, h3, h4 { font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
 }
 .post-meta span { white-space: nowrap; }
 .post-meta svg { flex-shrink: 0; width: 13px; height: 13px; vertical-align: -2px; margin-right: 0.25rem; }
+
+.post > .container > .post-meta { margin-top: 0; padding-top: 0; margin-bottom: var(--space-2); }
+
+.post .job-tags {
+  margin-bottom: var(--space-4);
+}
+.post .job-tags a {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.post .job-tags a:hover {
+  color: var(--accent-contrast);
+  background: var(--accent);
+}
 
 .pagination {
   display: flex;

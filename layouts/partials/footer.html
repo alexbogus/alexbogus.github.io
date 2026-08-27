@@ -1,15 +1,9 @@
-{{ $social := hugo.Data.social }}
 <footer class="site-footer">
   <div class="container footer-inner">
     <p class="footer-meta">&copy; {{ now.Year }} {{ .Site.Params.author }}</p>
     <nav class="footer-links" aria-label="Enlaces de contacto">
       <a href="{{ "/contacto/" | relURL }}">Contacto</a>
     </nav>
-    <div class="social-icons footer-social">
-      <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>
-      <a href="{{ $social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>
-      <a href="{{ $social.x }}" target="_blank" rel="noopener" aria-label="X">{{ partial "social-icon.html" "x" }}</a>
-      <a href="mailto:{{ $social.email }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
-    </div>
+    {{ partial "social-icons.html" "footer-social" }}
   </div>
 </footer>

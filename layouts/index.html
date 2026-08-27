@@ -1,6 +1,5 @@
 {{ define "main" }}
 {{ $cv := (.Site.GetPage "/cv").Params }}
-{{ $social := hugo.Data.social }}
 {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
 
 <section class="hero">
@@ -32,14 +31,14 @@
     <span class="hero-node" style="left: 92.0%; top: 63.6%; animation-delay: 1.5s;"></span>
   </div>
   <div class="container hero-content">
-    <p class="badge">{{ $cv.about.availability }}</p>
+    <a class="badge" href="{{ "/cv/" | relURL }}">{{ $cv.about.availability }}</a>
     <h1>{{ $cv.about.name }}</h1>
     <p class="specialization">{{ $cv.about.specialization }}</p>
     <h2 class="role">{{ $cv.about.role }}</h2>
     <p class="tagline">{{ $cv.about.tagline }}</p>
     <div class="hero-actions">
       <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>
-      <a class="btn btn-outline" href="{{ "/cv/" | relURL }}">Ver trayectoria</a>
+      <a class="btn" href="{{ "/cv/" | relURL }}">Ver trayectoria</a>
     </div>
   </div>
 </section>
@@ -51,11 +50,12 @@
       <div class="about-photo-col">
         {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
         {{ if $aboutPhoto }}
-        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Smart q82" }}
+        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Center q82" }}
         <div class="about-avatar-wrap">
           <img class="about-avatar" src="{{ $aboutPhoto.RelPermalink }}" width="{{ $aboutPhoto.Width }}" height="{{ $aboutPhoto.Height }}" alt="{{ $cv.about.name }}" loading="lazy">
         </div>
         <p class="about-avatar-caption">Strategic Cybersecurity &amp; Cyberdefense Advisor</p>
+        {{ partial "social-icons.html" "about-avatar-social" }}
         {{ end }}
       </div>
       <div class="about-text-col">
@@ -63,12 +63,6 @@
         {{ range $cv.about.bio }}
         <p>{{ . }}</p>
         {{ end }}
-        <div class="social-icons">
-          <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>
-          <a href="{{ $social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>
-          <a href="{{ $social.x }}" target="_blank" rel="noopener" aria-label="X">{{ partial "social-icon.html" "x" }}</a>
-          <a href="mailto:{{ $social.email }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
-        </div>
       </div>
     </div>
   </div>

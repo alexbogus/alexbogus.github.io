@@ -10,11 +10,12 @@
       <div class="about-photo-col">
         {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
         {{ if $aboutPhoto }}
-        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Smart q82" }}
+        {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Center q82" }}
         <div class="about-avatar-wrap">
           <img class="about-avatar" src="{{ $aboutPhoto.RelPermalink }}" width="{{ $aboutPhoto.Width }}" height="{{ $aboutPhoto.Height }}" alt="{{ $cv.about.name }}" loading="lazy">
         </div>
         <p class="about-avatar-caption">{{ $cv.about.role }}</p>
+        {{ partial "social-icons.html" "about-avatar-social" }}
         {{ end }}
       </div>
       <div class="about-text-col">
