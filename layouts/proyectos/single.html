@@ -24,6 +24,18 @@
       {{ .Content }}
     </div>
 
+    {{ $gallery := .Resources.Match "gallery*" }}
+    {{ with $gallery }}
+    <div class="post-gallery">
+      {{ range . }}
+      {{ $img := .Fill "800x600 q82" }}
+      <a href="{{ .RelPermalink }}" target="_blank" rel="noopener" class="post-gallery-item">
+        <img src="{{ $img.RelPermalink }}" alt="">
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
     {{ with .Params.links }}
     <div class="ref-links">
       <h2 class="ref-links-title">Referencias</h2>

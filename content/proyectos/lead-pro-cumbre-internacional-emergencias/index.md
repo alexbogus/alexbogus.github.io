@@ -7,6 +7,10 @@ tags: ["Emergencias", "Infraestructuras Críticas"]
 links:
   - label: "LEAD-PRO"
     url: "https://www.lead-pro.eu"
+  - label: "ISACA — European emergency teams to test AI-enabled flood response systems in Valencia"
+    url: "https://www.isaca.org/about-us/newsroom/press-releases/2026/european-emergency-teams-to-test-ai-enabled-flood-response-systems-in-valencia"
+  - label: "El Periódico — València reúne a expertos internacionales en gestión de emergencias"
+    url: "https://www.elperiodic.com/valencia/valencia-reune-expertos-internacionales-gestion-emergencias-resiliencia-urbana-marco-proyecto-europeo-lead_1080472"
 draft: false
 ---
 

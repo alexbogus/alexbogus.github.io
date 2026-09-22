@@ -1073,6 +1073,10 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
 }
 .post-cover img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
 
+.post-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-2); margin: var(--space-4) 0; }
+.post-gallery-item { display: block; border-radius: var(--radius-card); overflow: hidden; border: 1px solid var(--border); }
+.post-gallery-item img { width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+
 .ref-links { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--border); }
 .ref-links-title { font-size: 1.1rem; margin: 0 0 var(--space-2); }
 .ref-links-grid { display: flex; flex-wrap: wrap; gap: var(--space-2); }
