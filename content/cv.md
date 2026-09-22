@@ -101,7 +101,7 @@ experience:
 
   - title: "Cybersecurity and Critical Infrastructure Advisor"
     company: "LEAD PRO EU"
-    logo: ""
+    logo: "images/logos/lead-pro.jpeg"
     period: "Jun 2026 (1 mes)"
     location: "Valencia, España"
     description:
