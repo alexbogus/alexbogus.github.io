@@ -47,6 +47,14 @@
     monthFilter.addEventListener('change', applyFilters);
   }
 
+  document.querySelectorAll('.js-email-link').forEach(function (link) {
+    var address = link.getAttribute('data-user') + '@' + link.getAttribute('data-domain');
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.location.href = 'mailto:' + address;
+    });
+  });
+
   var contactForm = document.getElementById('contact-form');
   if (contactForm) {
     var status = contactForm.querySelector('.form-status');

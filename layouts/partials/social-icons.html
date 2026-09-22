@@ -3,5 +3,6 @@
   <a href="{{ $social.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">{{ partial "social-icon.html" "linkedin" }}</a>
   <a href="{{ $social.github }}" target="_blank" rel="noopener" aria-label="GitHub">{{ partial "social-icon.html" "github" }}</a>
   <a href="{{ $social.x }}" target="_blank" rel="noopener" aria-label="X">{{ partial "social-icon.html" "x" }}</a>
-  <a href="mailto:{{ $social.email }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
+  {{ $emailParts := split $social.email "@" }}
+  <a href="#" class="js-email-link" data-user="{{ index $emailParts 0 }}" data-domain="{{ index $emailParts 1 }}" aria-label="Email">{{ partial "social-icon.html" "email" }}</a>
 </div>
