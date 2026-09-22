@@ -1,39 +1,50 @@
 ---
 title: "Currículum"
-description: "Alejandro Aliaga Casanova, Strategic Cybersecurity & Cyberdefense Advisor y CTO especializado en ciberseguridad, ciberdefensa, SOC, sistemas críticos, defensa y emergencias."
+description: "Alejandro Aliaga Casanova, Chief Business Officer en ESET España, ejecutivo de Ciberdefensa e Infraestructuras Críticas especializado en ciberseguridad, SOC, comunicaciones de misión crítica, defensa y emergencias."
 type: cv
 url: /cv/
 about:
   name: "Alejandro Aliaga Casanova"
-  specialization: "Ciberseguridad · Ciberdefensa · Emergencias"
-  role: "Strategic Cybersecurity & Cyberdefense Advisor"
+  specialization: "Ciberdefensa · Infraestructuras Críticas · Ciberseguridad"
+  role: "Chief Business Officer, ESET España"
   availability: "Consulta mis Servicios"
   tagline: >
-    Más de 25 años de experiencia internacional dando soporte a operadores de
-    infraestructuras críticas, organismos públicos, entidades financieras y
-    sectores regulados en Europa y Latinoamérica. Especializado en SOC,
-    ciberdefensa, protección de infraestructuras críticas y comunicaciones
-    resilientes para emergencias.
+    Más de 20 años recorriendo todas las capas de la ciberseguridad: desde la
+    administración de sistemas y la infraestructura, pasando por la dirección
+    de SOC y la respuesta a incidentes, hasta la estrategia tecnológica y de
+    negocio a nivel C-level. Especializado en protección de infraestructuras
+    críticas, ciberdefensa y comunicaciones resilientes de misión crítica.
   profile_summary: >
-    Ejecutivo de Ciberseguridad, Ciberdefensa y Desarrollo de Negocio con
-    trayectoria demostrada liderando transformaciones de ciberseguridad,
+    Ejecutivo de Ciberdefensa e Infraestructuras Críticas con trayectoria
+    demostrada liderando estrategia de negocio y tecnología en ciberseguridad,
     alianzas estratégicas y expansión internacional en entornos de misión
     crítica. +8 SOCs diseñados y desplegados.
   bio:
     - >
-      A lo largo de mi carrera he pasado por organizaciones
-      internacionales, participando en proyectos de transformación
-      tecnológica relevantes, en sectores como banca, administración pública
-      y empresas IBEX35.
+      He recorrido en primera persona todas las capas de la ciberseguridad:
+      desde la administración de sistemas e infraestructuras, pasando por la
+      dirección de SOC y la respuesta a incidentes, hasta la estrategia
+      tecnológica y de negocio a nivel C-level. Sin una carrera universitaria
+      tradicional, mi trayectoria se ha construido a base de progresión
+      práctica, resultados y certificación continua, lo que me permite
+      hablar tanto con un equipo técnico como con un consejo de
+      administración en la misma semana.
     - >
-      Perfil multidisciplinar con profundos conocimientos tecnológicos que me
-      han permitido convertirme en asesor estratégico para la alta dirección.
+      He diseñado y desplegado más de 8 Centros de Operaciones de Seguridad
+      (SOC) para banca, administración pública y empresas del IBEX35,
+      liderando la ciberdefensa y la estrategia tecnológica en
+      infraestructuras críticas, comunicaciones seguras y entornos de misión
+      crítica en España, Italia y otros mercados.
     - >
-      Mi trabajo se extiende también a la ciberdefensa y a entornos críticos:
-      he liderado la ciberseguridad de soluciones de vigilancia con drones
-      (Vig-Sec Drone) y he participado como ponente en foros sobre
-      ciberdefensa, resiliencia de comunicaciones y transformación digital de
-      las Fuerzas Armadas.
+      Actualmente, en ESET España, lidero la estrategia de negocio en la
+      intersección entre ciberseguridad, protección de infraestructuras
+      críticas y desarrollo de mercado, trabajando con dirección ejecutiva,
+      clientes, partners y actores relevantes del sector.
+    - >
+      Mi foco actual: protección de infraestructuras críticas, resiliencia
+      cibernética, comunicaciones de misión crítica (TETRA, 5G, resiliencia
+      GNSS/PNT) y la intersección de la ciberdefensa con tecnologías de uso
+      dual: drones, guerra electrónica y sistemas autónomos.
     - >
       Mi trayectoria profesional me ha llevado a desempeñar mis funciones en
       ciudades como Valencia, Barcelona, Madrid y Roma; además, he tenido la
@@ -53,25 +64,50 @@ about:
     - title: "Experto Técnico"
       org: "Comisión Europea"
       description: "Aportación de experiencia en ciberseguridad, resiliencia de infraestructuras críticas y ecosistemas tecnológicos emergentes."
-    - title: "Contribuidor"
-      org: "LEAD PRO — Policía Local de Valencia"
-      description: "Programa de innovación en seguridad pública: tecnología, resiliencia operativa y comunicaciones seguras para servicios de emergencia."
+    - title: "Cybersecurity and Critical Infrastructure Advisor"
+      org: "LEAD PRO EU — Policía Local de Valencia"
+      description: "Asesoramiento en ciberseguridad, infraestructuras críticas, comunicaciones y resiliencia tecnológica, con foco en entornos de misión crítica y respuesta a emergencias. Participación en mesa redonda sobre gestión de emergencias."
 
 experience:
-  - title: "Chief Business & Technology Officer (CBO & CTO)"
-    company: "Ontinet.com"
-    logo: "images/logos/ontinet.png"
-    period: "Nov 2024 - Presente"
+  - title: "Chief Business Officer (CBO)"
+    company: "ESET España"
+    logo: "images/logos/eset.svg"
+    period: "Feb 2026 - Presente"
+    location: "Valencia, España (remoto)"
+    description:
+      - "Estrategia de negocio en la intersección entre ciberseguridad, infraestructuras críticas y desarrollo de mercado"
+      - "Crecimiento de negocio, alianzas estratégicas y posicionamiento de mercado"
+      - "Interlocución con dirección ejecutiva, clientes, partners y actores relevantes del sector"
+      - "Protección de infraestructuras críticas y resiliencia cibernética"
+      - "Comunicaciones seguras y tecnologías de misión crítica"
+      - "Desarrollo de negocio internacional"
+      - "Representación ejecutiva en foros de ciberseguridad y tecnología"
+    tags: ["CBO", "ESET", "Strategy", "Business Development"]
+
+  - title: "Chief Technology Officer (CTO)"
+    company: "ESET España"
+    logo: "images/logos/eset.svg"
+    period: "Nov 2024 - Abr 2026"
+    location: "Valencia, España (híbrido)"
+    description:
+      - "Alineación de la estrategia tecnológica, capacidades de ciberseguridad y objetivos de negocio"
+      - "Estrategia de ciberseguridad y ciberdefensa"
+      - "Operaciones de seguridad y resiliencia cibernética"
+      - "Protección de infraestructuras críticas"
+      - "Comunicaciones seguras y telecomunicaciones"
+      - "Alianzas estratégicas y desarrollo de ecosistema"
+      - "Asesoramiento ejecutivo e innovación tecnológica"
+    tags: ["CTO", "ESET", "Cybersecurity", "Technology Strategy"]
+
+  - title: "Cybersecurity and Critical Infrastructure Advisor"
+    company: "LEAD PRO EU"
+    logo: ""
+    period: "Jun 2026 (1 mes)"
     location: "Valencia, España"
     description:
-      - "Liderazgo tecnológico y estrategia de negocio de la organización"
-      - "Alianzas estratégicas con organizaciones en el ecosistema de Ciberseguridad"
-      - "Ayudar a la alta dirección en la interlocución con clientes, socios y actores relevantes del sector"
-      - "Liderar iniciativas de innovación centradas en operaciones de ciberseguridad asistidas por IA"
-      - "Contribuir a la expansión en otros mercados y desarrollo de nuevas ofertas de servicios"
-      - "Representación de la organización en foros nacionales e internacionales de ciberseguridad, tecnología y defensa"
-      - "Apoyo en la obtención de certificaciones de ciberseguridad ENS, ISO 27001"
-    tags: ["CBO", "CTO", "Strategy", "Management"]
+      - "Asesoramiento en ciberseguridad, infraestructuras críticas, comunicaciones y resiliencia tecnológica, con foco en entornos de misión crítica y respuesta a emergencias"
+      - "Participación en mesa redonda sobre gestión de emergencias, aportando una perspectiva práctica sobre el papel de la tecnología en la coordinación de equipos de emergencia"
+    tags: ["Advisor", "Emergencias", "Infraestructuras Críticas"]
 
   - title: "Head of Cyber Security"
     company: "Vig-Sec Drone S.L."
@@ -90,7 +126,7 @@ experience:
   - title: "Cybersecurity Program Advisor"
     company: "Startup Valencia"
     logo: "images/logos/startupvalencia.jpg"
-    period: "Abr 2024 - Presente"
+    period: "Abr 2025 - Presente"
     location: "Comunidad Valenciana"
     description:
       - "Designing and implementing cybersecurity strategies for startups."
