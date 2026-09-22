@@ -67,6 +67,7 @@ about:
     - title: "Cybersecurity and Critical Infrastructure Advisor"
       org: "LEAD PRO EU — Policía Local de Valencia"
       description: "Asesoramiento en ciberseguridad, infraestructuras críticas, comunicaciones y resiliencia tecnológica, con foco en entornos de misión crítica y respuesta a emergencias. Participación en mesa redonda sobre gestión de emergencias."
+      link: "/proyectos/lead-pro-cumbre-internacional-emergencias/"
 
 experience:
   - title: "Chief Business Officer (CBO)"
