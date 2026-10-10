@@ -47,6 +47,39 @@
     monthFilter.addEventListener('change', applyFilters);
   }
 
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var slides = carousel.querySelectorAll('.carousel-slide');
+    var dots = carousel.querySelectorAll('.carousel-dot');
+    if (!track || slides.length < 2) return;
+
+    var current = function () {
+      return Math.round(track.scrollLeft / track.clientWidth);
+    };
+    var goTo = function (index) {
+      var total = slides.length;
+      track.scrollTo({ left: ((index + total) % total) * track.clientWidth });
+    };
+    var updateDots = function () {
+      var active = current();
+      dots.forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === active);
+      });
+    };
+
+    carousel.querySelector('.carousel-btn--prev').addEventListener('click', function () { goTo(current() - 1); });
+    carousel.querySelector('.carousel-btn--next').addEventListener('click', function () { goTo(current() + 1); });
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () { goTo(i); });
+    });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current() + 1); }
+    });
+    track.addEventListener('scroll', updateDots, { passive: true });
+    updateDots();
+  });
+
   document.querySelectorAll('.js-email-link').forEach(function (link) {
     var address = link.getAttribute('data-user') + '@' + link.getAttribute('data-domain');
     link.addEventListener('click', function (e) {

@@ -1,0 +1,27 @@
+{{- $pattern := .Get "src" | default "galeria-*" -}}
+{{- $alts := split (.Get "alts" | default "") "|" -}}
+{{- $images := .Page.Resources.Match $pattern -}}
+{{- with $images }}
+<div class="carousel" data-carousel>
+  <div class="carousel-track" tabindex="0" aria-label="Galería de imágenes">
+    {{- range $i, $img := . }}
+    {{- $resized := $img.Resize "1200x webp q82" }}
+    {{- $alt := index $alts $i | default (printf "Imagen %d" (add $i 1)) }}
+    <figure class="carousel-slide">
+      <a href="{{ $img.RelPermalink }}" target="_blank" rel="noopener">
+        <img src="{{ $resized.RelPermalink }}" width="{{ $resized.Width }}" height="{{ $resized.Height }}" alt="{{ $alt }}" loading="lazy">
+      </a>
+    </figure>
+    {{- end }}
+  </div>
+  {{- if gt (len .) 1 }}
+  <button type="button" class="carousel-btn carousel-btn--prev" aria-label="Imagen anterior">&lsaquo;</button>
+  <button type="button" class="carousel-btn carousel-btn--next" aria-label="Imagen siguiente">&rsaquo;</button>
+  <div class="carousel-dots">
+    {{- range $i, $_ := . }}
+    <button type="button" class="carousel-dot" aria-label="Ir a la imagen {{ add $i 1 }}"></button>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>
+{{- end }}
