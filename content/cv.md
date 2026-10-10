@@ -102,7 +102,7 @@ experience:
 
   - title: "Cybersecurity and Critical Infrastructure Advisor"
     company: "LEAD PRO EU"
-    logo: "images/logos/lead-pro.jpeg"
+    logo: "images/logos/lead-pro.webp"
     period: "Jun 2026 (1 mes)"
     location: "Valencia, España"
     description:
@@ -112,7 +112,7 @@ experience:
 
   - title: "Head of Cyber Security"
     company: "Vig-Sec Drone S.L."
-    logo: "images/logos/vigsecdrone.png"
+    logo: "images/logos/vigsecdrone.webp"
     period: "Jun 2024 - 2026"
     location: "Madrid, España"
     description:
@@ -126,7 +126,7 @@ experience:
 
   - title: "Cybersecurity Program Advisor"
     company: "Startup Valencia"
-    logo: "images/logos/startupvalencia.jpg"
+    logo: "images/logos/startupvalencia.webp"
     period: "Abr 2025 - Presente"
     location: "Comunidad Valenciana"
     description:
@@ -137,7 +137,7 @@ experience:
 
   - title: "Profesor Asociado"
     company: "Escuela de Gobierno eGob®"
-    logo: "images/logos/egob.png"
+    logo: "images/logos/egob.webp"
     period: "Dic 2024 - Presente"
     location: "Valencia, España (remoto)"
     description:
@@ -146,7 +146,7 @@ experience:
 
   - title: "Profesor Asociado"
     company: "Universidad Internacional de Valencia (VIU)"
-    logo: "images/logos/viu.png"
+    logo: "images/logos/viu.webp"
     period: "Dic 2024 - Presente"
     location: "Valencia, España (remoto)"
     description:
@@ -156,7 +156,7 @@ experience:
 
   - title: "SOC Director / International Business Co-Director (EMEA)"
     company: "BeDisruptive"
-    logo: "images/logos/bedisruptive.png"
+    logo: "images/logos/bedisruptive.webp"
     period: "2020 - 2024"
     location: "Madrid / Roma"
     description:
@@ -168,7 +168,7 @@ experience:
 
   - title: "Cybersecurity Director"
     company: "GRUPO CAJAMAR"
-    logo: "images/logos/cajamar.png"
+    logo: "images/logos/cajamar.webp"
     period: "Abr 2019 - Jun 2020"
     location: "Valencia, España"
     description:
@@ -179,7 +179,7 @@ experience:
 
   - title: "Cybersecurity Director / SOC Director"
     company: "Sothis"
-    logo: "images/logos/sothis.png"
+    logo: "images/logos/sothis.webp"
     period: "Mar 2017 - Mar 2019"
     location: "Valencia, España"
     description:
@@ -201,7 +201,7 @@ experience:
 
   - title: "IT Manager"
     company: "SanLucar Fruit"
-    logo: "images/logos/sanlucar.png"
+    logo: "images/logos/sanlucar.webp"
     period: "Dic 2011 - Sep 2015"
     location: "Valencia"
     description:
@@ -212,7 +212,7 @@ experience:
 
   - title: "Senior IT Systems Administrator"
     company: "Ibermatica"
-    logo: "images/logos/ayesa.png"
+    logo: "images/logos/ayesa.webp"
     period: "2007 - 2011"
     location: "Spain"
     description:

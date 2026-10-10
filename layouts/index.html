@@ -3,7 +3,7 @@
 {{ $posts := (where site.RegularPages "Section" "posts").ByDate.Reverse }}
 
 <section class="hero">
-  {{ $heroBg := resources.Get "images/background-telecom.jpeg" }}
+  {{ $heroBg := resources.Get "images/background-telecom.webp" }}
   {{ if $heroBg }}
   {{ $heroBg := $heroBg.Resize "2400x q82" }}
   <img class="hero-bg" src="{{ $heroBg.RelPermalink }}" alt="" role="presentation">
@@ -48,7 +48,7 @@
     <h2 class="section-title">Sobre mí</h2>
     <div class="about-grid">
       <div class="about-photo-col">
-        {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
+        {{ $aboutPhoto := resources.Get "images/about-photo.webp" }}
         {{ if $aboutPhoto }}
         {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Center q82" }}
         <div class="about-avatar-wrap">

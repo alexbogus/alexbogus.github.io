@@ -11,7 +11,7 @@ Por eso, hablar de comunicaciones críticas no debería significar únicamente h
 
 En [Protección Civil Godella](https://www.instagram.com/pcgodella/) hemos llevado ese concepto a la operativa, experimentando y probando tecnologías para facilitar el despliegue de ese tipo de redes con el objetivo de demostrar la idoneidad de este tipo de infraestructuras que proporcionen conectividad desplegable a los servicios de emergencias.
 
-![PMA](pma.jpg)
+![PMA](pma.webp)
 
 Pero no somos los únicos, un ejercicio reciente realizado en Nueva Zelanda por SafetyNet Critical Communications evaluó diferentes aproximaciones para proporcionar conectividad desplegable a los servicios de emergencias, combinando una solución celular con una plataforma aérea basada en un dron cautivo.
 

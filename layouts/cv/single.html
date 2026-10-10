@@ -8,7 +8,7 @@
     <h2 class="role">{{ $cv.about.role }}</h2>
     <div class="about-grid">
       <div class="about-photo-col">
-        {{ $aboutPhoto := resources.Get "images/about-photo.jpg" }}
+        {{ $aboutPhoto := resources.Get "images/about-photo.webp" }}
         {{ if $aboutPhoto }}
         {{ $aboutPhoto := $aboutPhoto.Fill "640x640 Center q82" }}
         <div class="about-avatar-wrap">

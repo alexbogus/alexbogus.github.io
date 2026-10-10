@@ -23,9 +23,9 @@
 
 {{/* --- Open Graph / Twitter Card --- */}}
 {{ $ogImage := "" }}
-{{ with .Resources.GetMatch "cover*" }}{{ $ogImage = (.Fill "1200x630").Permalink }}{{ end }}
+{{ with .Resources.GetMatch "cover*" }}{{ $ogImage = (.Fill "1200x630 jpg q82").Permalink }}{{ end }}
 {{ if not $ogImage }}
-{{ with resources.Get "images/hero-bg.jpg" }}{{ $ogImage = (.Fill "1200x630 q78").Permalink }}{{ end }}
+{{ with resources.Get "images/background-telecom.webp" }}{{ $ogImage = (.Fill "1200x630 jpg q78").Permalink }}{{ end }}
 {{ end }}
 
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
