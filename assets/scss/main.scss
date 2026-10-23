@@ -1090,7 +1090,7 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-slide { flex: 0 0 100%; margin: 0; scroll-snap-align: start; }
-.carousel-slide img { width: 100%; height: auto; display: block; aspect-ratio: 3 / 2; object-fit: cover; }
+.carousel-slide img { width: 100%; height: auto; display: block; }
 .carousel-btn {
   position: absolute;
   top: calc(50% - 0.8rem);
