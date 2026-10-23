@@ -58,6 +58,10 @@ about:
     - "Construcción de alianzas estratégicas para impulsar la expansión internacional en mercados EMEA y LATAM."
     - "Contribución al desarrollo de soluciones de comunicaciones para la protección de infraestructuras críticas, respuesta a emergencias y plataformas UAV"
   engagements:
+    - title: "Mentor en ciberseguridad y seguridad de las comunicaciones"
+      org: "NASA Space Apps Challenge Valencia 2026"
+      description: "Acompañamiento a los equipos del hackathon de la NASA en ciberseguridad, protección de las comunicaciones y diseño seguro de soluciones espaciales."
+      link: "/ponencias/2026-11-nasa-space-apps-challenge-valencia-mentor/"
     - title: "Ponente y panelista"
       org: "INNOESPAI 2026 (Espai Aero CV)"
       description: "Ciberseguridad, ciberdefensa y comunicaciones seguras para ecosistemas UAV e infraestructuras críticas."
