@@ -5,7 +5,7 @@
   <div class="container">
     <h1>{{ $cv.about.name }}</h1>
     <p class="specialization">{{ $cv.about.specialization }}</p>
-    <h2 class="role">{{ $cv.about.role }}</h2>
+    {{ with $cv.about.role }}<h2 class="role">{{ . }}</h2>{{ end }}
     <div class="about-grid">
       <div class="about-photo-col">
         {{ $aboutPhoto := resources.Get "images/about-photo.webp" }}
@@ -14,7 +14,7 @@
         <div class="about-avatar-wrap">
           <img class="about-avatar" src="{{ $aboutPhoto.RelPermalink }}" width="{{ $aboutPhoto.Width }}" height="{{ $aboutPhoto.Height }}" alt="{{ $cv.about.name }}" loading="lazy">
         </div>
-        <p class="about-avatar-caption">{{ $cv.about.role }}</p>
+        {{ with $cv.about.role }}<p class="about-avatar-caption">{{ . }}</p>{{ end }}
         {{ partial "social-icons.html" "about-avatar-social" }}
         {{ end }}
       </div>
@@ -47,7 +47,7 @@
       {{ range $cv.experience }}
       {{ $dates := split .period " - " }}
       {{ $company := .company }}
-      <div class="job-card">
+      <div class="job-card{{ if .roles }} job-card--company{{ end }}">
         <div class="job-facts">
           <div class="job-logo">
             {{ if .logo }}
@@ -67,9 +67,25 @@
             <span class="job-date-sep" aria-hidden="true"></span>
             <span class="job-date-end">{{ if gt (len $dates) 1 }}{{ index $dates 1 }}{{ end }}</span>
           </div>
-          <div class="job-role">{{ .title }}</div>
+          <div class="job-role">{{ if .roles }}{{ .company }}{{ else }}{{ .title }}{{ end }}</div>
         </div>
         <div class="job-details">
+          {{ if .roles }}
+          <h3>{{ .company }}</h3>
+          <div class="meta"><span>{{ .period }}</span></div>
+          {{ range .roles }}
+          <div class="job-role-block">
+            <h4>{{ .title }}</h4>
+            <div class="meta"><span>{{ .period }}</span> <span>{{ .location }}</span></div>
+            <ul class="job-desc">
+              {{ range .description }}<li>{{ . }}</li>{{ end }}
+            </ul>
+            <div class="job-tags">
+              {{ range .tags }}<span>{{ . }}</span>{{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ else }}
           <h3>{{ .title }}</h3>
           <div class="company">{{ .company }}</div>
           <div class="meta"><span>{{ .period }}</span> <span>{{ .location }}</span></div>
@@ -79,6 +95,7 @@
           <div class="job-tags">
             {{ range .tags }}<span>{{ . }}</span>{{ end }}
           </div>
+          {{ end }}
         </div>
       </div>
       {{ end }}

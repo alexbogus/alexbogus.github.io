@@ -34,7 +34,7 @@
     <a class="badge" href="{{ "/cv/" | relURL }}">{{ $cv.about.availability }}</a>
     <h1>{{ $cv.about.name }}</h1>
     <p class="specialization">{{ $cv.about.specialization }}</p>
-    <h2 class="role">{{ $cv.about.role }}</h2>
+    {{ with $cv.about.role }}<h2 class="role">{{ . }}</h2>{{ end }}
     <p class="tagline">{{ $cv.about.tagline }}</p>
     <div class="hero-actions">
       <a class="btn" href="{{ "/contacto/" | relURL }}">Contactar</a>

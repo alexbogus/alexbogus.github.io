@@ -1,12 +1,11 @@
 ---
 title: "Currículum"
-description: "Alejandro Aliaga Casanova, Chief Business Officer en ESET España, ejecutivo de Ciberdefensa e Infraestructuras Críticas especializado en ciberseguridad, SOC, comunicaciones de misión crítica, defensa y emergencias."
+description: "Alejandro Aliaga Casanova, ejecutivo de Ciberdefensa e Infraestructuras Críticas especializado en ciberseguridad, SOC, comunicaciones de misión crítica, defensa y emergencias."
 type: cv
 url: /cv/
 about:
   name: "Alejandro Aliaga Casanova"
   specialization: "Ciberdefensa · Infraestructuras Críticas · Ciberseguridad"
-  role: "Chief Business Officer, ESET España"
   availability: "Consulta mis Servicios"
   tagline: >
     Más de 20 años recorriendo todas las capas de la ciberseguridad: desde la
@@ -35,11 +34,6 @@ about:
       liderando la ciberdefensa y la estrategia tecnológica en
       infraestructuras críticas, comunicaciones seguras y entornos de misión
       crítica en España, Italia y otros mercados.
-    - >
-      Actualmente, en ESET España, lidero la estrategia de negocio en la
-      intersección entre ciberseguridad, protección de infraestructuras
-      críticas y desarrollo de mercado, trabajando con dirección ejecutiva,
-      clientes, partners y actores relevantes del sector.
     - >
       Mi foco actual: protección de infraestructuras críticas, resiliencia
       cibernética, comunicaciones de misión crítica (TETRA, 5G, resiliencia
@@ -78,35 +72,35 @@ about:
       link: "/proyectos/lead-pro-cumbre-internacional-emergencias/"
 
 experience:
-  - title: "Chief Business Officer (CBO)"
-    company: "ESET España"
+  - company: "ESET España"
     logo: "images/logos/eset.svg"
-    period: "Feb 2026 - Presente"
-    location: "Valencia, España (remoto)"
-    description:
-      - "Estrategia de negocio en la intersección entre ciberseguridad, infraestructuras críticas y desarrollo de mercado"
-      - "Crecimiento de negocio, alianzas estratégicas y posicionamiento de mercado"
-      - "Interlocución con dirección ejecutiva, clientes, partners y actores relevantes del sector"
-      - "Protección de infraestructuras críticas y resiliencia cibernética"
-      - "Comunicaciones seguras y tecnologías de misión crítica"
-      - "Desarrollo de negocio internacional"
-      - "Representación ejecutiva en foros de ciberseguridad y tecnología"
-    tags: ["CBO", "ESET", "Strategy", "Business Development"]
+    period: "Nov 2024 - Oct 2026"
+    roles:
+      - title: "Chief Business Officer (CBO)"
+        period: "Feb 2026 - Oct 2026"
+        location: "Valencia, España (remoto)"
+        description:
+          - "Estrategia de negocio en la intersección entre ciberseguridad, infraestructuras críticas y desarrollo de mercado"
+          - "Crecimiento de negocio, alianzas estratégicas y posicionamiento de mercado"
+          - "Interlocución con dirección ejecutiva, clientes, partners y actores relevantes del sector"
+          - "Protección de infraestructuras críticas y resiliencia cibernética"
+          - "Comunicaciones seguras y tecnologías de misión crítica"
+          - "Desarrollo de negocio internacional"
+          - "Representación ejecutiva en foros de ciberseguridad y tecnología"
+        tags: ["CBO", "ESET", "Strategy", "Business Development"]
 
-  - title: "Chief Technology Officer (CTO)"
-    company: "ESET España"
-    logo: "images/logos/eset.svg"
-    period: "Nov 2024 - Abr 2026"
-    location: "Valencia, España (híbrido)"
-    description:
-      - "Alineación de la estrategia tecnológica, capacidades de ciberseguridad y objetivos de negocio"
-      - "Estrategia de ciberseguridad y ciberdefensa"
-      - "Operaciones de seguridad y resiliencia cibernética"
-      - "Protección de infraestructuras críticas"
-      - "Comunicaciones seguras y telecomunicaciones"
-      - "Alianzas estratégicas y desarrollo de ecosistema"
-      - "Asesoramiento ejecutivo e innovación tecnológica"
-    tags: ["CTO", "ESET", "Cybersecurity", "Technology Strategy"]
+      - title: "Chief Technology Officer (CTO)"
+        period: "Nov 2024 - Abr 2026"
+        location: "Valencia, España (híbrido)"
+        description:
+          - "Alineación de la estrategia tecnológica, capacidades de ciberseguridad y objetivos de negocio"
+          - "Estrategia de ciberseguridad y ciberdefensa"
+          - "Operaciones de seguridad y resiliencia cibernética"
+          - "Protección de infraestructuras críticas"
+          - "Comunicaciones seguras y telecomunicaciones"
+          - "Alianzas estratégicas y desarrollo de ecosistema"
+          - "Asesoramiento ejecutivo e innovación tecnológica"
+        tags: ["CTO", "ESET", "Cybersecurity", "Technology Strategy"]
 
   - title: "Cybersecurity and Critical Infrastructure Advisor"
     company: "LEAD PRO EU"

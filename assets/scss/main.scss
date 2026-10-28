@@ -677,6 +677,15 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
 }
 .job-desc { margin: 0.5rem 0; padding-left: 1.1rem; color: var(--text-secondary); }
 
+// Empresa con varios puestos (estilo LinkedIn): la ficha muestra la
+// empresa una vez y cada puesto se apila con su propio periodo.
+.job-role-block { margin-top: var(--space-3); }
+.job-role-block h4 { margin: 0 0 0.2rem; }
+.job-role-block + .job-role-block {
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
 @media (max-width: 640px) {
   .job-card {
     grid-template-columns: auto 1fr;
