@@ -1,0 +1,6 @@
+{{- $id := .Get "id" -}}
+{{- $start := .Get "start" | default 0 -}}
+{{- $title := .Get "title" | default "Vídeo" -}}
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/{{ $id }}?start={{ $start }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" title="{{ $title }}"></iframe>
+</div>
