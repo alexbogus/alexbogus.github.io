@@ -63,13 +63,16 @@ about:
     - title: "Ponente y panelista"
       org: "INNOESPAI 2026 (Espai Aero CV)"
       description: "Ciberseguridad, ciberdefensa y comunicaciones seguras para ecosistemas UAV e infraestructuras críticas."
+      imagePage: "/ponencias/2026-07-eset-acuerdo-espai-aero/"
     - title: "Experto Técnico"
       org: "Comisión Europea"
       description: "Aportación de experiencia en ciberseguridad, resiliencia de infraestructuras críticas y ecosistemas tecnológicos emergentes."
+      monogram: "CE"
     - title: "Cybersecurity and Critical Infrastructure Advisor"
       org: "LEAD PRO EU — Policía Local de Valencia"
       description: "Asesoramiento en ciberseguridad, infraestructuras críticas, comunicaciones y resiliencia tecnológica, con foco en entornos de misión crítica y respuesta a emergencias. Participación en mesa redonda sobre gestión de emergencias."
       link: "/proyectos/lead-pro-cumbre-internacional-emergencias/"
+      image: "gallery-1.webp"
 
 experience:
   - company: "ESET España"

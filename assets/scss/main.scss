@@ -782,25 +782,127 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
 // ------------------------------------------------------------
 // Compromiso Estratégico (Engagement)
 // ------------------------------------------------------------
+.section-intro {
+  max-width: 68ch;
+  margin: calc(var(--space-1) * -1) 0 var(--space-4);
+  color: var(--text-secondary);
+}
+
 .engagement-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-3);
-  margin-bottom: var(--space-4);
 }
-.engagement-item {
-  border-left: 2px solid var(--accent);
-  padding: 0.2rem 0 0.2rem var(--space-3);
+
+.engagement-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
-.engagement-title { font-weight: 600; }
+.engagement-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+.engagement-card:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.engagement-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: linear-gradient(140deg, var(--surface-hover), var(--bg-elevated));
+}
+.engagement-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+.engagement-card:hover .engagement-media img { transform: scale(1.04); }
+
+.engagement-media--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    linear-gradient(140deg, var(--surface-hover), var(--bg-elevated));
+}
+.engagement-monogram {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--accent-strong);
+}
+
+.engagement-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: var(--space-3);
+}
 .engagement-org {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--accent);
-  margin: 0.15rem 0 0.4rem;
 }
-.engagement-desc { color: var(--text-secondary); font-size: 0.92rem; margin: 0; }
-.engagement-link { display: inline-block; margin-top: 0.3rem; font-size: 0.85rem; color: var(--accent); }
+.engagement-title {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.3;
+}
+.engagement-desc {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.engagement-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+  padding-top: var(--space-1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+.engagement-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+.engagement-link svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--transition);
+}
+.engagement-link:hover svg { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .engagement-card,
+  .engagement-card:hover,
+  .engagement-media img,
+  .engagement-card:hover .engagement-media img { transform: none; transition: none; }
+}
+
+@media print {
+  .engagement-list { grid-template-columns: 1fr; }
+  .engagement-card { break-inside: avoid; box-shadow: none; }
+}
 
 // ------------------------------------------------------------
 // Contact CTA (cierre del CV)

@@ -141,20 +141,48 @@
 {{ if $cv.about.engagements }}
 <section id="engagement" class="section engagement">
   <div class="container">
-    <h2 class="section-title">Colaboraciones</h2>
+    <div class="section-title-row">
+      <h2 class="section-title">Colaboraciones</h2>
+      <a class="section-link" href="{{ "/ponencias/" | relURL }}">Ver todas las ponencias &rarr;</a>
+    </div>
+    <p class="section-intro">Conferencias, mentorías y asesoramiento en foros nacionales e internacionales sobre ciberseguridad, ciberdefensa e infraestructuras críticas.</p>
     <div class="engagement-list">
       {{ range $cv.about.engagements }}
-      <div class="engagement-item">
-        <div class="engagement-title">{{ .title }}</div>
-        <div class="engagement-org">{{ .org }}</div>
-        <p class="engagement-desc">{{ .description }}</p>
-        {{ with .link }}
-        <a href="{{ . | relURL }}" class="engagement-link">Ver más &rarr;</a>
-        {{ end }}
-      </div>
+      {{ $item := . }}
+      {{ $page := "" }}
+      {{ with .imagePage }}{{ $page = site.GetPage . }}{{ end }}
+      {{ if not $page }}
+      {{ with .link }}
+      {{ if hasPrefix . "/" }}{{ $page = site.GetPage . }}{{ end }}
+      {{ end }}
+      {{ end }}
+      {{ $img := "" }}
+      {{ with $page }}
+      {{ with .Resources.GetMatch ($item.image | default "cover*") }}
+      {{ $img = .Fill "800x450 Center q82" }}
+      {{ end }}
+      {{ end }}
+      <article class="engagement-card">
+        <div class="engagement-media{{ if not $img }} engagement-media--fallback{{ end }}">
+          {{ if $img }}
+          <img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $item.title }} — {{ $item.org }}" loading="lazy">
+          {{ else }}
+          <span class="engagement-monogram" aria-hidden="true">{{ $item.monogram | default (upper (substr $item.org 0 2)) }}</span>
+          {{ end }}
+        </div>
+        <div class="engagement-body">
+          <div class="engagement-org">{{ $item.org }}</div>
+          <h3 class="engagement-title">{{ $item.title }}</h3>
+          <p class="engagement-desc">{{ $item.description }}</p>
+          {{ with $item.link }}
+          <a href="{{ . | relURL }}" class="engagement-link" aria-label="Ver más sobre {{ $item.title }}">Ver más
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          {{ end }}
+        </div>
+      </article>
       {{ end }}
     </div>
-    <p><a href="{{ "/ponencias/" | relURL }}">Ver todas las ponencias &rarr;</a></p>
   </div>
 </section>
 {{ end }}
