@@ -115,6 +115,7 @@ experience:
   - title: "Head of Cyber Security"
     company: "Vig-Sec Drone S.L."
     logo: "images/logos/vigsecdrone.webp"
+    logo_wide: true
     period: "Jun 2024 - 2026"
     location: "Madrid, España"
     description:

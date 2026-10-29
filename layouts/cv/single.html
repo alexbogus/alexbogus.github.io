@@ -49,7 +49,7 @@
       {{ $company := .company }}
       <div class="job-card{{ if .roles }} job-card--company{{ end }}">
         <div class="job-facts">
-          <div class="job-logo">
+          <div class="job-logo{{ if .logo_wide }} job-logo--wide{{ end }}">
             {{ if .logo }}
             {{ with resources.Get .logo }}
             <img src="{{ .RelPermalink }}" alt="{{ $company }}" loading="lazy">

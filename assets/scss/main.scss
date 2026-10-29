@@ -641,6 +641,18 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
   color: var(--job-facts-text-muted);
 }
 
+// Wordmark horizontal: en la ficha cuadrada quedaría ilegible, así que
+// esa ficha ocupa el ancho de la columna.
+.job-logo.job-logo--wide {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 400 / 150;
+}
+.job-logo--wide img {
+  max-width: 94%;
+  max-height: 94%;
+}
+
 .job-dates {
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -698,6 +710,7 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
     gap: 0.7rem;
   }
   .job-logo { width: 40px; height: 40px; }
+  .job-logo.job-logo--wide { width: auto; height: 40px; }
   .job-dates { flex-direction: row; gap: 0.3rem; font-size: 0.7rem; }
   .job-date-sep { width: 8px; height: 1px; margin: 0; }
   .job-role { display: none; }
@@ -715,6 +728,7 @@ a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(
   }
   .job-card { grid-template-columns: 90px 1fr; gap: var(--space-2); break-inside: avoid; }
   .job-logo { width: 40px; height: 40px; }
+  .job-logo.job-logo--wide { width: 84px; height: auto; }
   .timeline { gap: var(--space-3); }
 }
 
